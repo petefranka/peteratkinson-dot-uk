@@ -1,8 +1,10 @@
 /* Pete Personal Website - Matching cortes.us aesthetic */
 /* Dark, bold, minimal */
 
-/* Import Inter for body and a bold sans for display */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+/* Import Nunito - very rounded, friendly typeface */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+/* Import Rampart One - 3D display font for logo */
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 
 /* CSS Reset */
 *, *::before, *::after {
@@ -11,20 +13,21 @@
   padding: 0;
 }
 
-/* Design Tokens - Dark theme matching cortes.us */
+/* Design Tokens - Black theme */
 :root {
   /* Colors */
-  --color-bg-primary: #161616;
-  --color-bg-secondary: #1a1a1a;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #aaaaaa;
-  --color-text-muted: #666666;
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #CCCCCC;
+  --color-text-muted: #888888;
   --color-border: #333333;
-  --color-accent: #ffffff;
+  --color-accent: #FFFFFF;
   
   /* Typography */
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
   
   /* Font Sizes */
@@ -69,7 +72,9 @@ body {
   font-size: var(--text-base);
   line-height: 1.6;
   color: var(--color-text-secondary);
-  background-color: var(--color-bg-primary);
+  background: linear-gradient(to bottom, #000000 0%, #222222 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
