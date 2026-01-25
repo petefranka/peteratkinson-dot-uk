@@ -104,6 +104,7 @@
   max-width: 800px;
   width: 100%;
   text-align: center;
+  padding: var(--space-3xl) 0;
 }
 
 .hero__about p {

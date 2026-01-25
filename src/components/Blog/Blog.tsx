@@ -79,6 +79,39 @@ const Blog = () => {
         <div className="blog__button-wrapper">
           <a href="#" className="blog__button">View all Articles</a>
         </div>
+        <div className="blog__contact">
+          <div className="blog__contact-container">
+            <div className="blog__contact-left">
+              {/* Space for future content */}
+            </div>
+            <div className="blog__contact-right">
+              <h3 className="blog__contact-title">Get in touch</h3>
+              <form className="blog__contact-form" onSubmit={(e) => e.preventDefault()}>
+                <div className="blog__contact-row">
+                  <input
+                    type="text"
+                    placeholder="What should I call you?"
+                    className="blog__contact-input"
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="How can I reply?"
+                    className="blog__contact-input"
+                    required
+                  />
+                </div>
+                <textarea
+                  placeholder="Tell me what's on your mind..."
+                  className="blog__contact-textarea"
+                  rows={6}
+                  required
+                />
+                <button type="submit" className="blog__contact-button">Send message</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
