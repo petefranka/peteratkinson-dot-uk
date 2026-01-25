@@ -33,7 +33,7 @@ const Blog = () => {
   return (
     <section id="blog" className="blog">
       <div className="blog__container">
-        <h2 className="blog__title">Blog</h2>
+        <h2 className="blog__title">Writing</h2>
         <ul className="blog__list">
           {blogPosts.map((post, index) => (
             <li key={index} className="blog__item">

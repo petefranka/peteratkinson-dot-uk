@@ -1,6 +1,6 @@
 .work {
-  padding: var(--space-4xl) var(--space-lg);
-  background-color: var(--color-bg-primary);
+  padding: var(--space-3xl) var(--space-lg);
+  background-color: var(--color-bg-secondary);
 }
 
 .work__container {
@@ -9,11 +9,10 @@
 }
 
 .work__title {
-  font-size: var(--text-3xl);
-  font-weight: 700;
+  font-size: var(--text-2xl);
+  font-weight: 600;
   color: var(--color-text-primary);
   margin-bottom: var(--space-xl);
-  text-transform: uppercase;
   letter-spacing: -0.02em;
 }
 
@@ -61,6 +60,7 @@
   font-size: var(--text-base);
   font-weight: 600;
   color: var(--color-text-primary);
+  line-height: 1.4;
 }
 
 .work__company {
@@ -78,11 +78,11 @@
 
 @media (max-width: 768px) {
   .work {
-    padding: var(--space-3xl) var(--space-md);
+    padding: var(--space-2xl) var(--space-md);
   }
   
   .work__title {
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
   }
   
   .work__item {
