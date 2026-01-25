@@ -3,7 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-background);
+  background-color: var(--color-bg-primary);
+  padding: var(--space-lg);
 }
 
 .not-found__container {
@@ -11,7 +12,8 @@
 }
 
 .not-found__title {
-  font-size: var(--text-5xl);
+  font-size: var(--text-6xl);
+  font-weight: 700;
   color: var(--color-text-primary);
   margin-bottom: var(--space-sm);
 }

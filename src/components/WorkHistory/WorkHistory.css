@@ -1,24 +1,31 @@
 .work {
-  padding: var(--space-3xl) 0;
-  background-color: var(--color-background);
+  padding: var(--space-4xl) var(--space-lg);
+  background-color: var(--color-bg-primary);
 }
 
 .work__container {
-  max-width: 640px;
+  max-width: var(--max-width-narrow);
+  margin: 0 auto;
 }
 
 .work__title {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-xl);
+  font-size: var(--text-3xl);
+  font-weight: 700;
   color: var(--color-text-primary);
-  letter-spacing: -0.01em;
+  margin-bottom: var(--space-xl);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .work__list {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .work__item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--space-lg);
   padding: var(--space-lg) 0;
   border-bottom: 1px solid var(--color-border);
 }
@@ -32,15 +39,18 @@
   padding-bottom: 0;
 }
 
-.work__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--space-sm);
-  gap: var(--space-md);
+.work__left {
+  flex-shrink: 0;
 }
 
-.work__role-info {
+.work__period {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.work__right {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -49,40 +59,38 @@
 .work__role {
   font-family: var(--font-body);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-primary);
 }
 
 .work__company {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
-}
-
-.work__period {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  white-space: nowrap;
+  margin-bottom: var(--space-xs);
 }
 
 .work__description {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  line-height: 1.7;
-  margin-bottom: 0;
+  line-height: 1.6;
+  margin: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .work {
-    padding: var(--space-2xl) 0;
+    padding: var(--space-3xl) var(--space-md);
   }
   
-  .work__header {
-    flex-direction: column;
-    gap: 4px;
+  .work__title {
+    font-size: var(--text-2xl);
+  }
+  
+  .work__item {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
   }
   
   .work__period {
     order: -1;
-    font-size: var(--text-xs);
   }
 }

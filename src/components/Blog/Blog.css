@@ -1,80 +1,84 @@
 .blog {
-  padding: var(--space-3xl) 0;
-  background-color: var(--color-surface);
+  padding: var(--space-4xl) var(--space-lg);
+  background-color: var(--color-bg-secondary);
 }
 
 .blog__container {
-  max-width: 640px;
+  max-width: var(--max-width-narrow);
+  margin: 0 auto;
 }
 
 .blog__title {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-xl);
+  font-size: var(--text-3xl);
+  font-weight: 700;
   color: var(--color-text-primary);
-  letter-spacing: -0.01em;
+  margin-bottom: var(--space-xl);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .blog__list {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .blog__item {
-  padding: var(--space-lg) 0;
   border-bottom: 1px solid var(--color-border);
-}
-
-.blog__item:first-child {
-  padding-top: 0;
 }
 
 .blog__item:last-child {
   border-bottom: none;
-  padding-bottom: 0;
 }
 
-.blog__post {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
+.blog__link {
+  display: block;
+  padding: var(--space-lg) 0;
+  transition: opacity var(--transition-base);
+}
+
+.blog__link:hover {
+  opacity: 1;
+}
+
+.blog__link:hover .blog__post-title {
+  color: var(--color-text-secondary);
 }
 
 .blog__date {
+  font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: var(--space-xs);
 }
 
 .blog__post-title {
-  font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
   color: var(--color-text-primary);
-  margin-bottom: 4px;
-}
-
-.blog__post-link {
+  margin-bottom: var(--space-xs);
   transition: color var(--transition-fast);
-}
-
-.blog__post-link:hover {
-  opacity: 1;
-  color: var(--color-text-secondary);
 }
 
 .blog__excerpt {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  line-height: 1.7;
-  margin-bottom: 0;
+  line-height: 1.6;
+  margin: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .blog {
-    padding: var(--space-2xl) 0;
+    padding: var(--space-3xl) var(--space-md);
+  }
+  
+  .blog__title {
+    font-size: var(--text-2xl);
   }
   
   .blog__post-title {
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
   }
 }
