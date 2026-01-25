@@ -1,56 +1,89 @@
 .hero {
-  padding: var(--space-xl) 0 var(--space-3xl);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4xl) var(--space-lg);
+  text-align: center;
 }
 
-.hero__container {
+.hero__content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.hero__image-wrapper {
+.hero__tagline {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-md);
+}
+
+.hero__name {
+  font-family: var(--font-display);
+  font-size: var(--text-7xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-xl);
+  text-transform: uppercase;
+}
+
+.hero__name-line {
+  display: block;
+}
+
+.hero__image-container {
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
   margin-bottom: var(--space-2xl);
+  border-radius: 16px;
   overflow: hidden;
-  border-radius: 4px;
 }
 
 .hero__image {
   width: 100%;
   height: auto;
-  object-fit: cover;
   aspect-ratio: 4 / 5;
-}
-
-.hero__content {
-  text-align: center;
-  max-width: 600px;
-}
-
-.hero__title {
-  font-size: var(--text-3xl);
-  margin-bottom: var(--space-lg);
-  color: var(--color-text-primary);
-  letter-spacing: -0.02em;
+  object-fit: cover;
 }
 
 .hero__intro {
+  max-width: 520px;
   font-size: var(--text-lg);
+  font-weight: 400;
   color: var(--color-text-secondary);
-  line-height: 1.8;
+  line-height: 1.7;
+  margin: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .hero {
-    padding: var(--space-lg) 0 var(--space-2xl);
+    padding: var(--space-3xl) var(--space-md);
+    min-height: auto;
+    padding-top: 100px;
   }
   
-  .hero__title {
-    font-size: var(--text-2xl);
+  .hero__name {
+    font-size: var(--text-5xl);
+  }
+  
+  .hero__image-container {
+    max-width: 300px;
   }
   
   .hero__intro {
     font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__name {
+    font-size: var(--text-4xl);
   }
 }
