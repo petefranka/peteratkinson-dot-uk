@@ -10,8 +10,8 @@
 
 .header__nav {
   display: flex;
-  justify-content: center;
-  gap: var(--space-xl);
+  justify-content: flex-start;
+  gap: var(--space-lg);
 }
 
 .header__link {
@@ -19,7 +19,6 @@
   font-size: var(--text-sm);
   font-weight: 400;
   color: var(--color-text-secondary);
-  text-transform: capitalize;
   letter-spacing: 0.02em;
   transition: color var(--transition-fast);
 }

@@ -38,7 +38,7 @@ const WorkHistory = () => {
   return (
     <section id="work" className="work">
       <div className="work__container">
-        <h2 className="work__title">Work</h2>
+        <h2 className="work__title">Work Experience</h2>
         <ul className="work__list">
           {workHistory.map((item, index) => (
             <li key={index} className="work__item">

@@ -4,24 +4,29 @@ const About = () => {
   return (
     <section id="about" className="about">
       <div className="about__container">
-        <h2 className="about__title">About</h2>
         <div className="about__content">
           <p>
-            I've always been drawn to the intersection of creativity and 
-            technology. There's something magical about taking an idea from 
-            a rough sketch to a fully realized product that people actually 
-            use and enjoy.
+            I currently work as a <strong>Senior Product Designer</strong>, focusing on 
+            creating intuitive interfaces and delightful user experiences. Outside of work, 
+            I'm passionate about photography, sustainable living, and the art of a perfectly 
+            brewed cup of coffee.
           </p>
           <p>
-            My approach is simple: listen carefully, think deeply, and build 
-            with intention. I believe the best work comes from genuine curiosity 
-            and a willingness to question assumptions.
+            I specialize in product design for both web and mobile apps and thrive in 0 → 1 
+            work. My expertise is in design leadership, visual design, user experience, and 
+            design systems. I also have a background in Engineering, with a focus on React, 
+            CSS architecture, and component systems.
           </p>
           <p>
-            Outside of work, I'm passionate about photography, sustainable living, 
-            and the art of a perfectly brewed cup of coffee. I believe in slowing 
-            down and finding joy in everyday moments.
+            I'm currently available for full time and contract design roles for early stage 
+            startups and creative projects. I believe the best work comes from genuine 
+            curiosity and a willingness to question assumptions.
           </p>
+        </div>
+        
+        <div className="about__buttons">
+          <a href="#" className="about__button">View my resume</a>
+          <a href="mailto:hello@pete.com" className="about__button">Email me - hello@pete.com</a>
         </div>
       </div>
     </section>
