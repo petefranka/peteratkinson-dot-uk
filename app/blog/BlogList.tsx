@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { BlogPost } from '@/lib/blog';
 import CustomSelect from './CustomSelect';
 import OutdatedTag from '@/components/Blog/OutdatedTag';
@@ -92,16 +93,37 @@ export default function BlogList({ posts }: BlogListProps) {
 
   return (
     <div className="blog-list">
-      <header className="blog-list__header">
-        <h1 className="blog-list__title">My thoughts and feelings</h1>
-        <p className="blog-list__description">
-          A collection of my thoughts on engineering, web development, building reliable systems, 
-          and the lessons I've learned along the way. Here you'll find insights, tips, and reflections 
-          from my journey as a developer.
-        </p>
-      </header>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{
+          duration: 0.6,
+          delay: 0.1,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+      >
+        <header className="blog-list__header">
+          <h1 className="blog-list__title">My thoughts and feelings</h1>
+          <p className="blog-list__description">
+            A collection of my thoughts on engineering, web development, building reliable systems, 
+            and the lessons I've learned along the way. Here you'll find insights, tips, and reflections 
+            from my journey as a developer.
+          </p>
+        </header>
+      </motion.div>
 
-      <div className="blog-list__controls">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{
+          duration: 0.6,
+          delay: 0.2,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        className="blog-list__controls"
+      >
         <div className="blog-list__filters">
           {categories.map((category) => (
             <button
@@ -124,40 +146,52 @@ export default function BlogList({ posts }: BlogListProps) {
             ]}
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="blog-list__grid">
         {filteredPosts.length > 0 ? (
-          filteredPosts.map((post) => {
+          filteredPosts.map((post, index) => {
             const { isOutdated, daysOld } = getArticleAge(post.date);
             return (
-              <article key={post.slug} className="blog-list__card">
-                <Link href={`/blog/${post.slug}`} className="blog-list__card-link">
-                  <div className="blog-list__image-wrapper">
-                    <img 
-                      src={post.image || '/placeholder.svg'} 
-                      alt={post.title}
-                      className="blog-list__image"
-                    />
-                    {post.category && (
-                      <span className="blog-list__category">{post.category}</span>
-                    )}
-                    {isOutdated && (
-                      <OutdatedTag daysOld={daysOld} className="blog-list__outdated" />
-                    )}
-                  </div>
-                  <div className="blog-list__card-content">
-                    <h2 className="blog-list__card-title">{post.title}</h2>
-                    {post.excerpt && (
-                      <p className="blog-list__excerpt">{post.excerpt}</p>
-                    )}
-                  </div>
-                  <div className="blog-list__read-more">
-                    <span>Read article</span>
-                    <span className="blog-list__arrow">→</span>
-                  </div>
-                </Link>
-              </article>
+              <motion.div
+                key={post.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              >
+                <article className="blog-list__card">
+                  <Link href={`/blog/${post.slug}`} className="blog-list__card-link">
+                    <div className="blog-list__image-wrapper">
+                      <img 
+                        src={post.image || '/placeholder.svg'} 
+                        alt={post.title}
+                        className="blog-list__image"
+                      />
+                      {post.category && (
+                        <span className="blog-list__category">{post.category}</span>
+                      )}
+                      {isOutdated && (
+                        <OutdatedTag daysOld={daysOld} className="blog-list__outdated" />
+                      )}
+                    </div>
+                    <div className="blog-list__card-content">
+                      <h2 className="blog-list__card-title">{post.title}</h2>
+                      {post.excerpt && (
+                        <p className="blog-list__excerpt">{post.excerpt}</p>
+                      )}
+                    </div>
+                    <div className="blog-list__read-more">
+                      <span>Read article</span>
+                      <span className="blog-list__arrow">→</span>
+                    </div>
+                  </Link>
+                </article>
+              </motion.div>
             );
           })
         ) : (

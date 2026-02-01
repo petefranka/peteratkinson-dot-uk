@@ -3,7 +3,7 @@ import '../src/index.css';
 
 export const metadata: Metadata = {
   title: 'Peter Atkinson - Staff Engineer',
-  description: 'Engineer from Yorkshire building reliable systems and web experiences',
+  description: 'Engineer from Yorkshire, building reliable systems and web experiences',
 };
 
 export default function RootLayout({

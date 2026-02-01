@@ -15,9 +15,9 @@ const Header = () => {
           />
         </Link>
         <nav className="header__nav">
-          <a href="#about-tabs" className="header__link">Projects</a>
           <a href="#about" className="header__link">About</a>
-          <Link href="/blog" className="header__link">Blog</Link>
+          <a href="#experience" className="header__link">Experience</a>
+          <a href="#blog" className="header__link">Thoughts</a>
         </nav>
       </div>
     </header>

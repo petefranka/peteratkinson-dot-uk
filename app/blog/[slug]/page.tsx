@@ -9,6 +9,7 @@ import * as runtime from 'react/jsx-runtime';
 import rehypeHighlight from 'rehype-highlight';
 import { getAllPosts } from '@/lib/blog';
 import OutdatedTag from '@/components/Blog/OutdatedTag';
+import AnimatedSection from './AnimatedSection';
 import './blog-page.css';
 
 async function getPost(slug: string) {
@@ -133,39 +134,45 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </Link>
         
         <article className="blog-post-page__article">
-          <header className="blog-post-page__header">
-            <h1 className="blog-post-page__title">{frontmatter.title}</h1>
-            
-            <div className="blog-post-page__meta">
-              {frontmatter.date && (
-                <time className="blog-post-page__date" dateTime={frontmatter.date} suppressHydrationWarning>
-                  {formatDate(frontmatter.date)}
-                </time>
+          <AnimatedSection animation="fadeInUp">
+            <header className="blog-post-page__header">
+              <h1 className="blog-post-page__title">{frontmatter.title}</h1>
+              
+              <div className="blog-post-page__meta">
+                {frontmatter.date && (
+                  <time className="blog-post-page__date" dateTime={frontmatter.date} suppressHydrationWarning>
+                    {formatDate(frontmatter.date)}
+                  </time>
+                )}
+                <div className="blog-post-page__category-wrapper">
+                  {frontmatter.category && (
+                    <span className="blog-post-page__category">{frontmatter.category}</span>
+                  )}
+                  {isOutdated && (
+                    <OutdatedTag daysOld={daysOld} className="blog-post-page__outdated" />
+                  )}
+                </div>
+              </div>
+              
+              {frontmatter.image && (
+                <AnimatedSection animation="fadeIn" delay={0.2}>
+                  <div className="blog-post-page__image-wrapper">
+                    <img 
+                      src={frontmatter.image || '/placeholder.svg'} 
+                      alt={frontmatter.title}
+                      className="blog-post-page__image"
+                    />
+                  </div>
+                </AnimatedSection>
               )}
-              <div className="blog-post-page__category-wrapper">
-                {frontmatter.category && (
-                  <span className="blog-post-page__category">{frontmatter.category}</span>
-                )}
-                {isOutdated && (
-                  <OutdatedTag daysOld={daysOld} className="blog-post-page__outdated" />
-                )}
-              </div>
-            </div>
-            
-            {frontmatter.image && (
-              <div className="blog-post-page__image-wrapper">
-                <img 
-                  src={frontmatter.image || '/placeholder.svg'} 
-                  alt={frontmatter.title}
-                  className="blog-post-page__image"
-                />
-              </div>
-            )}
-          </header>
+            </header>
+          </AnimatedSection>
           
-          <div className="blog-post-page__content">
-            <MDXContent />
-          </div>
+          <AnimatedSection animation="fadeIn" delay={0.3}>
+            <div className="blog-post-page__content">
+              <MDXContent />
+            </div>
+          </AnimatedSection>
         </article>
       </main>
       <Footer />
