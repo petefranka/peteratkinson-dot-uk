@@ -1,3 +1,69 @@
+/* Tippy.js Custom Styles */
+.tippy-box[data-theme~='dark'] {
+  background-color: rgba(0, 0, 0, 0.95);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.tippy-box[data-theme~='dark'] > .tippy-arrow {
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.tippy-box[data-theme~='dark'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: rgba(0, 0, 0, 0.95);
+  border-width: 6px 6px 0;
+  top: -1px;
+}
+
+.tippy-box[data-theme~='dark'][data-placement^='top'] > .tippy-arrow::after {
+  border-top-color: var(--color-border);
+  border-width: 7px 7px 0;
+  top: -2px;
+}
+
+.tippy-box[data-theme~='dark'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: rgba(0, 0, 0, 0.95);
+  border-width: 0 6px 6px;
+  bottom: -1px;
+}
+
+.tippy-box[data-theme~='dark'][data-placement^='bottom'] > .tippy-arrow::after {
+  border-bottom-color: var(--color-border);
+  border-width: 0 7px 7px;
+  bottom: -2px;
+}
+
+.tippy-box[data-theme~='dark'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: rgba(0, 0, 0, 0.95);
+  border-width: 6px 0 6px 6px;
+  left: -1px;
+}
+
+.tippy-box[data-theme~='dark'][data-placement^='left'] > .tippy-arrow::after {
+  border-left-color: var(--color-border);
+  border-width: 7px 0 7px 7px;
+  left: -2px;
+}
+
+.tippy-box[data-theme~='dark'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: rgba(0, 0, 0, 0.95);
+  border-width: 6px 6px 6px 0;
+  right: -1px;
+}
+
+.tippy-box[data-theme~='dark'][data-placement^='right'] > .tippy-arrow::after {
+  border-right-color: var(--color-border);
+  border-width: 7px 7px 7px 0;
+  right: -2px;
+}
+
 .blog {
   padding: 0 var(--space-lg) var(--space-4xl);
   background-color: transparent;
@@ -130,6 +196,22 @@
   letter-spacing: 0.02em;
   backdrop-filter: blur(8px);
   z-index: 1;
+}
+
+.blog__outdated {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background-color: rgba(255, 140, 0, 0.9);
+  color: #000000;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(8px);
+  z-index: 1;
+  cursor: pointer;
 }
 
 .blog__content {

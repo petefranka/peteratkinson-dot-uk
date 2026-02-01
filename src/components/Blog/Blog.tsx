@@ -1,6 +1,7 @@
 import './Blog.css';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/blog';
+import OutdatedTag from './OutdatedTag';
 
 // Format date from YYYY-MM-DD to "Jan 2025" format
 function formatDate(dateString: string): string {
@@ -13,6 +14,26 @@ function formatDate(dateString: string): string {
     return `${month} ${year}`;
   } catch {
     return dateString;
+  }
+}
+
+// Check if article is more than 3 months old and get days old
+function getArticleAge(dateString: string): { isOutdated: boolean; daysOld: number } {
+  if (!dateString) return { isOutdated: false, daysOld: 0 };
+  
+  try {
+    const articleDate = new Date(dateString);
+    const now = new Date();
+    const diffTime = now.getTime() - articleDate.getTime();
+    const daysOld = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const threeMonthsInDays = 90; // Approximately 3 months
+    
+    return {
+      isOutdated: daysOld > threeMonthsInDays,
+      daysOld: daysOld
+    };
+  } catch {
+    return { isOutdated: false, daysOld: 0 };
   }
 }
 
@@ -45,32 +66,38 @@ const Blog = async () => {
           <div className="blog__content">
             <div className="blog__grid">
               {latestPosts.length > 0 ? (
-                latestPosts.map((post) => (
-                  <article key={post.slug} className="blog__card">
-                    <Link href={`/blog/${post.slug}`} className="blog__card-link">
-                      <div className="blog__image-wrapper">
-                        <img 
-                          src={post.image || '/placeholder.svg'} 
-                          alt={post.title}
-                          className="blog__image"
-                        />
-                        {post.category && (
-                          <span className="blog__category">{post.category}</span>
-                        )}
-                      </div>
-                      <div className="blog__card-content">
-                        <h3 className="blog__card-title">{post.title}</h3>
-                        {post.excerpt && (
-                          <p className="blog__excerpt">{post.excerpt}</p>
-                        )}
-                      </div>
-                      <div className="blog__read-more">
-                        <span>Read full Article</span>
-                        <span className="blog__arrow">→</span>
-                      </div>
-                    </Link>
-                  </article>
-                ))
+                latestPosts.map((post) => {
+                  const { isOutdated, daysOld } = getArticleAge(post.date);
+                  return (
+                    <article key={post.slug} className="blog__card">
+                      <Link href={`/blog/${post.slug}`} className="blog__card-link">
+                        <div className="blog__image-wrapper">
+                          <img 
+                            src={post.image || '/placeholder.svg'} 
+                            alt={post.title}
+                            className="blog__image"
+                          />
+                          {post.category && (
+                            <span className="blog__category">{post.category}</span>
+                          )}
+                          {isOutdated && (
+                            <OutdatedTag daysOld={daysOld} />
+                          )}
+                        </div>
+                        <div className="blog__card-content">
+                          <h3 className="blog__card-title">{post.title}</h3>
+                          {post.excerpt && (
+                            <p className="blog__excerpt">{post.excerpt}</p>
+                          )}
+                        </div>
+                        <div className="blog__read-more">
+                          <span>Read full Article</span>
+                          <span className="blog__arrow">→</span>
+                        </div>
+                      </Link>
+                    </article>
+                  );
+                })
               ) : (
                 <p className="blog__empty">No blog posts yet. Check back soon!</p>
               )}
