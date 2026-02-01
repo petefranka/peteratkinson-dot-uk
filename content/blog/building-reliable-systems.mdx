@@ -1,0 +1,43 @@
+---
+title: "Building Reliable Systems: Lessons from Production"
+date: "2025-01-15"
+excerpt: "What I've learned about building systems that don't break when you need them most"
+category: "Engineering"
+image: "/placeholder.svg"
+---
+
+# Building Reliable Systems: Lessons from Production
+
+After years of working on production systems, I've learned that reliability isn't just about writing good code—it's about thinking through failure modes, designing for observability, and building systems that degrade gracefully.
+
+## Start with Observability
+
+You can't fix what you can't see. Before you write a single line of code, think about:
+
+- **What metrics matter?** Response times, error rates, queue depths?
+- **How will you know when something's wrong?** Alerts, dashboards, logs?
+- **Can you trace a request end-to-end?** Distributed tracing is essential in modern systems
+
+## Design for Failure
+
+Assume everything will fail. Your database will go down. Your third-party API will timeout. Your cache will be evicted. Design your system to handle these failures gracefully:
+
+```typescript
+async function fetchUserData(userId: string) {
+  try {
+    return await primaryDatabase.getUser(userId);
+  } catch (error) {
+    // Fallback to cache or secondary read replica
+    return await cache.get(`user:${userId}`) || 
+           await secondaryDatabase.getUser(userId);
+  }
+}
+```
+
+## The Power of Timeouts and Circuit Breakers
+
+Never let a slow dependency take down your entire system. Use timeouts and circuit breakers to fail fast and protect your service.
+
+## Conclusion
+
+Reliability is a journey, not a destination. Start small, measure everything, and iterate based on what you learn in production.

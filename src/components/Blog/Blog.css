@@ -186,6 +186,14 @@
   transform: translateX(4px);
 }
 
+.blog__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-4xl);
+  color: var(--color-text-secondary);
+  font-size: var(--text-lg);
+}
+
 .blog__button-wrapper {
   display: flex;
   justify-content: center;

@@ -3,19 +3,20 @@ import Hero from '@/components/Hero/Hero';
 import AboutTabs from '@/components/AboutTabs/AboutTabs';
 import Blog from '@/components/Blog/Blog';
 import Footer from '@/components/Footer/Footer';
+import { Suspense } from 'react';
 
-const Index = () => {
+export default async function Home() {
   return (
     <div className="page">
       <Header />
       <main>
         <Hero />
         <AboutTabs />
-        <Blog />
+        <Suspense fallback={<div>Loading blog posts...</div>}>
+          <Blog />
+        </Suspense>
       </main>
       <Footer />
     </div>
   );
-};
-
-export default Index;
+}

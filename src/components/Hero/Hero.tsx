@@ -1,6 +1,4 @@
 import './Hero.css';
-import heroImage1 from '@/assets/hero-image.jpg';
-import heroImage2 from '@/assets/hero-image2.jpg';
 
 const Hero = () => {
   return (
@@ -13,12 +11,12 @@ const Hero = () => {
           
           <div className="hero__images">
             <img 
-              src={heroImage1} 
+              src="/hero-image.jpg"
               alt="Peter Atkinson" 
               className="hero__image"
             />
             <img 
-              src={heroImage2} 
+              src="/hero-image2.jpg"
               alt="Peter Atkinson" 
               className="hero__image"
             />

@@ -1,0 +1,73 @@
+---
+title: "TypeScript Tips That Changed How I Code"
+date: "2025-01-05"
+excerpt: "Five TypeScript patterns that make code more maintainable and less error-prone"
+category: "Development"
+image: "/placeholder.svg"
+---
+
+# TypeScript Tips That Changed How I Code
+
+TypeScript is powerful, but it's easy to fight against it. Here are patterns that made me embrace the type system instead of working around it.
+
+## 1. Use Discriminated Unions for State
+
+Instead of optional properties that can conflict, use discriminated unions:
+
+```typescript
+type LoadingState = { status: 'loading' };
+type SuccessState = { status: 'success'; data: User[] };
+type ErrorState = { status: 'error'; error: string };
+
+type State = LoadingState | SuccessState | ErrorState;
+
+function render(state: State) {
+  switch (state.status) {
+    case 'loading':
+      return <Spinner />;
+    case 'success':
+      return <UserList users={state.data} />;
+    case 'error':
+      return <Error message={state.error} />;
+  }
+}
+```
+
+## 2. Branded Types for Domain Safety
+
+Prevent mixing up similar types:
+
+```typescript
+type UserId = string & { __brand: 'UserId' };
+type PostId = string & { __brand: 'PostId' };
+
+function getUser(id: UserId) { /* ... */ }
+function getPost(id: PostId) { /* ... */ }
+
+// TypeScript will catch this:
+getUser(postId); // Error!
+```
+
+## 3. Utility Types Are Your Friend
+
+`Pick`, `Omit`, `Partial`, and `Required` can save you from writing duplicate types.
+
+## 4. Const Assertions for Literal Types
+
+```typescript
+const routes = ['/home', '/about', '/blog'] as const;
+type Route = typeof routes[number]; // '/home' | '/about' | '/blog'
+```
+
+## 5. Use `satisfies` for Type Checking Without Widening
+
+```typescript
+const config = {
+  apiUrl: 'https://api.example.com',
+  timeout: 5000,
+} satisfies Config; // Checks types but preserves literal types
+```
+
+## Start Small
+
+You don't need to refactor everything at once. Start with new code and gradually improve existing code as you touch it.
