@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
 /* Import Rampart One - 3D display font for logo */
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+/* Import Inter - modern sans-serif for hero section */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* CSS Reset */
 *, *::before, *::after {
