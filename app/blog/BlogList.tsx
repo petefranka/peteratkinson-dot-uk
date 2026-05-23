@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CategoryTag } from '@/components/Blog';
+import { CategoryTag, SimpleOutdatedTag } from '@/components/Blog';
 import { formatDate } from '@/functions';
 
 interface Post {
@@ -71,7 +71,10 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                             <time dateTime={post.date}>{formatDate(post.date)}</time>
                           </p>
                         )}
-                        {post.category && <CategoryTag category={post.category} />}
+                        <span className="inline-flex items-center gap-2">
+                          {post.category && <CategoryTag category={post.category} />}
+                          {post.date && <SimpleOutdatedTag date={post.date} />}
+                        </span>
                       </div>
                       {post.excerpt && (
                         <p className="mb-6 last:mb-0 site-body">{post.excerpt}</p>

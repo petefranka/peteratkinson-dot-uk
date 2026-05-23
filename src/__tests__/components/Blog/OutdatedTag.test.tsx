@@ -17,29 +17,29 @@ describe('OutdatedTag', () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it('renders a notice for articles over 90 days old', () => {
+  it('renders for articles over 90 days old', () => {
     render(<OutdatedTag date="2025-11-23" />);
-    expect(screen.getByRole('complementary')).toBeInTheDocument();
+    expect(screen.getByTestId('outdated-tag')).toBeInTheDocument();
   });
 
   it('shows age in months for articles under a year old', () => {
     render(<OutdatedTag date="2025-11-23" />);
-    expect(screen.getByText(/6 months old/)).toBeInTheDocument();
+    expect(screen.getByTestId('outdated-tag')).toHaveTextContent('6 months old');
   });
 
   it('shows age in years for articles over a year old', () => {
     render(<OutdatedTag date="2024-05-23" />);
-    expect(screen.getByText(/2 years old/)).toBeInTheDocument();
+    expect(screen.getByTestId('outdated-tag')).toHaveTextContent('2 years old');
   });
 
   it('uses singular "year" when exactly 1 year old', () => {
     render(<OutdatedTag date="2025-05-23" />);
-    expect(screen.getByText(/1 year old/)).toBeInTheDocument();
-    expect(screen.queryByText(/1 years old/)).toBeNull();
+    expect(screen.getByTestId('outdated-tag')).toHaveTextContent('1 year old');
+    expect(screen.getByTestId('outdated-tag')).not.toHaveTextContent('1 years old');
   });
 
   it('has the Article age notice aria-label', () => {
     render(<OutdatedTag date="2024-05-23" />);
-    expect(screen.getByRole('complementary')).toHaveAttribute('aria-label', 'Article age notice');
+    expect(screen.getByTestId('outdated-tag')).toHaveAttribute('aria-label', 'Article age notice');
   });
 });

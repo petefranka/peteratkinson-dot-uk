@@ -28,8 +28,10 @@ export default async function HomeBlog() {
                 {formatDate(post.date, { month: 'short', year: 'numeric' })}
               </time>
             )}
-            {post.category && <CategoryTag category={post.category} />}
-            {post.date && <SimpleOutdatedTag date={post.date} />}
+            <span className="inline-flex items-center gap-2">
+              {post.category && <CategoryTag category={post.category} />}
+              {post.date && <SimpleOutdatedTag date={post.date} />}
+            </span>
           </div>
           {post.excerpt && <Paragraph>{post.excerpt}</Paragraph>}
           <Paragraph>
