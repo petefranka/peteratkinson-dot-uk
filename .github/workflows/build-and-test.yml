@@ -1,0 +1,23 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    uses: ./.github/workflows/build-and-test.yml
+
+  create-preview:
+    needs: build-and-test
+    if: github.event_name == 'pull_request'
+    uses: ./.github/workflows/create-preview-in-vercel.yml
+    secrets: inherit
+
+  deploy-application:
+    needs: build-and-test
+    if: github.event_name == 'push'
+    uses: ./.github/workflows/deploy-application-to-vercel.yml
+    secrets: inherit
