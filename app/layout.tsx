@@ -3,7 +3,7 @@ import { DM_Sans, Fraunces } from 'next/font/google';
 import Script from 'next/script';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights as VercelSpeedInsights } from '@vercel/speed-insights/next';
-import { siteDescription, siteTitle, siteUrl } from '@/lib/site';
+import { siteDescription, siteName, siteTitle, siteUrl } from '@/lib/site';
 import '../src/index.css';
 import 'tippy.js/dist/tippy.css';
 
@@ -24,6 +24,16 @@ export const metadata: Metadata = {
     template: '%s | Peter Atkinson',
   },
   description: siteDescription,
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   alternates: {
     types: {
       'application/rss+xml': `${siteUrl}/feed.xml`,

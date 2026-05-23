@@ -2,16 +2,29 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteShell from '@/components/Home/SiteShell';
 import { getAllPosts } from '@/lib/blog';
-import { siteDescription, siteUrl } from '@/lib/site';
+import { siteName, siteTitle, siteUrl } from '@/lib/site';
 import BlogList from './BlogList';
+
+const blogDescription = 'Notes on engineering, work and things I have picked up along the way.';
 
 export const metadata: Metadata = {
   title: 'My Thoughts',
-  description: 'Notes on engineering, work and things I have picked up along the way.',
+  description: blogDescription,
+  authors: [{ name: siteName, url: siteUrl }],
+  alternates: {
+    canonical: `${siteUrl}/blog`,
+  },
   openGraph: {
+    type: 'website',
     title: 'My Thoughts | Peter Atkinson',
-    description: siteDescription,
+    description: blogDescription,
     url: `${siteUrl}/blog`,
+    siteName: siteTitle,
+  },
+  twitter: {
+    card: 'summary',
+    title: 'My Thoughts | Peter Atkinson',
+    description: blogDescription,
   },
 };
 

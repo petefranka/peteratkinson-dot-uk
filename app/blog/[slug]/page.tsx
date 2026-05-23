@@ -7,8 +7,8 @@ import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import rehypeHighlight from 'rehype-highlight';
 import { getAllPosts, parseFrontmatter, stripFrontmatter } from '@/lib/blog';
-import { siteName, siteUrl } from '@/lib/site';
-import { CategoryTag, OutdatedTag } from '@/components/Blog';
+import { siteName, siteTitle, siteUrl } from '@/lib/site';
+import { BlogPostJsonLd, CategoryTag, OutdatedTag } from '@/components/Blog';
 import { formatDate } from '@/functions';
 import './blog-page.css';
 
@@ -52,6 +52,13 @@ export async function generateMetadata({
   return {
     title,
     description,
+    authors: [{ name: siteName, url: siteUrl }],
+    keywords: [
+      ...(frontmatter.category ? [frontmatter.category] : []),
+      'Engineering',
+      'Software',
+      siteName,
+    ],
     alternates: {
       canonical: url,
     },
@@ -60,13 +67,18 @@ export async function generateMetadata({
       title,
       description,
       url,
+      siteName: siteTitle,
       publishedTime: frontmatter.date || undefined,
       authors: [siteName],
+      section: frontmatter.category ?? 'Engineering',
+      tags: frontmatter.category ? [frontmatter.category] : [],
+      ...(frontmatter.image ? { images: [{ url: `${siteUrl}${frontmatter.image}` }] } : {}),
     },
     twitter: {
-      card: 'summary',
+      card: frontmatter.image ? 'summary_large_image' : 'summary',
       title,
       description,
+      ...(frontmatter.image ? { images: [`${siteUrl}${frontmatter.image}`] } : {}),
     },
   };
 }
@@ -94,6 +106,14 @@ export default async function BlogPost({
 
   return (
     <SiteShell backHref="/blog" backLabel="← All articles">
+      <BlogPostJsonLd
+        slug={slug}
+        title={frontmatter.title}
+        date={frontmatter.date}
+        excerpt={frontmatter.excerpt}
+        category={frontmatter.category}
+        image={frontmatter.image}
+      />
       <article className="blog-post">
         <header className="flex flex-col gap-4 mb-12">
           <h1 className="text-3xl sm:text-4xl site-heading leading-tight">
