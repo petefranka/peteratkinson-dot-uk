@@ -1,16 +1,8 @@
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/blog';
 import { Article, Paragraph } from './Section';
-
-function formatDate(dateString: string): string {
-  if (!dateString) return '';
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
-  } catch {
-    return dateString;
-  }
-}
+import { CategoryTag, SimpleOutdatedTag } from '@/components/Blog';
+import { formatDate } from '@/functions';
 
 export default async function HomeBlog() {
   let posts: Awaited<ReturnType<typeof getAllPosts>> = [];
@@ -30,13 +22,15 @@ export default async function HomeBlog() {
     <div className="flex flex-col gap-8 divide-y site-divide">
       {latestPosts.map((post) => (
         <Article key={post.slug} title={post.title}>
-          {post.date && (
-            <Paragraph>
+          <div className="flex flex-wrap items-center gap-3 mb-6">
+            {post.date && (
               <time className="site-muted" dateTime={post.date}>
-                {formatDate(post.date)}
+                {formatDate(post.date, { month: 'short', year: 'numeric' })}
               </time>
-            </Paragraph>
-          )}
+            )}
+            {post.category && <CategoryTag category={post.category} />}
+            {post.date && <SimpleOutdatedTag date={post.date} />}
+          </div>
           {post.excerpt && <Paragraph>{post.excerpt}</Paragraph>}
           <Paragraph>
             <Link href={`/blog/${post.slug}`} className="site-link">

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SiteShell from '@/components/Home/SiteShell';
 import { getAllPosts } from '@/lib/blog';
 import { siteDescription, siteUrl } from '@/lib/site';
+import BlogList from './BlogList';
 
 export const metadata: Metadata = {
   title: 'My Thoughts',
@@ -13,20 +14,6 @@ export const metadata: Metadata = {
     url: `${siteUrl}/blog`,
   },
 };
-
-function formatDate(dateString: string): string {
-  if (!dateString) return '';
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    });
-  } catch {
-    return dateString;
-  }
-}
 
 export default async function BlogPage() {
   const posts = await getAllPosts();
@@ -50,41 +37,7 @@ export default async function BlogPage() {
         </p>
       </section>
 
-      <section aria-labelledby="blog-list-heading">
-        <h2 id="blog-list-heading" className="sr-only">
-          All articles
-        </h2>
-        {posts.length > 0 ? (
-          <ul className="flex flex-col gap-8 divide-y site-divide list-none">
-            {posts.map((post) => (
-              <li key={post.slug} className="pt-8 first:pt-0">
-                <article className="site-article">
-                  <h3 className="site-article-title">
-                    <Link href={`/blog/${post.slug}`} className="site-link">
-                      {post.title}
-                    </Link>
-                  </h3>
-                  {post.date && (
-                    <p className="mb-6 site-muted">
-                      <time dateTime={post.date}>{formatDate(post.date)}</time>
-                    </p>
-                  )}
-                  {post.excerpt && (
-                    <p className="mb-6 last:mb-0 site-body">{post.excerpt}</p>
-                  )}
-                  <p className="mb-6 last:mb-0">
-                    <Link href={`/blog/${post.slug}`} className="site-link">
-                      Read article
-                    </Link>
-                  </p>
-                </article>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="site-body">No posts yet. Check back soon!</p>
-        )}
-      </section>
+      <BlogList posts={posts} />
     </SiteShell>
   );
 }
