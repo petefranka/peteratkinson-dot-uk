@@ -50,9 +50,6 @@ Tests live next to their source files as `*.test.ts(x)`. The test suite covers:
 
 - `src/lib/` — pure utility functions (`slug`, `utils`, `blog` frontmatter parsing)
 - `src/components/Home/` — `TextLink`, `Section`, `Article`, `Paragraph`, `Subheading`
-- `src/components/NavLink.tsx` — active-state logic
-- `src/components/Blog/BlogClient.tsx` — rendering, date formatting, outdated tagging
-- `src/hooks/use-mobile.tsx` — media query hook
 
 Next.js modules (`next/link`, `next/navigation`) and `framer-motion` are mocked in tests. `css: false` in `vitest.config.ts` silences CSS import errors.
 
