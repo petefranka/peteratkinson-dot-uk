@@ -86,12 +86,13 @@ export default function HomePage() {
                   travellers, including a dedicated travel site for the NHS.
                 </Paragraph>
               </Article>
-              <Article title="Unasys">
-                <Paragraph>
-                  Earlier at Unasys I built completions management software for
-                  oil and gas, including a digital twin of the North Sea.
-                </Paragraph>
-              </Article>
+            </div>
+            <div className="mt-10">
+              <Paragraph>
+                <TextLink href="https://www.linkedin.com/in/peteratkinson" external>
+                  View full work history on LinkedIn
+                </TextLink>
+              </Paragraph>
             </div>
           </Section>
 
@@ -109,22 +110,36 @@ export default function HomePage() {
 
               <Subheading>Where I&apos;ve been</Subheading>
               <Paragraph>
-                I got a first in Computer Science from{' '}
+                I graduated with a first in Computer Science from{' '}
                 <TextLink href="https://www.tees.ac.uk/" external>
                   Teesside University
                 </TextLink>
-                , then started at Clicksco on travel sites before moving into
-                enterprise work at Unasys and TUI. ASOS was the longest chapter:
-                logistics and warehousing at scale. Along the way I picked up
-                shorter stints at Sky, AND Digital and Heatly.
+                , something I&apos;m still quietly proud of, and jumped straight
+                into the industry with an internship at a startup building niche
+                travel websites. From there I spent time at various startups,
+                which was a world away from anything I knew but taught me a lot.
+              </Paragraph>
+              <Paragraph>
+                Things moved quickly after that. I joined TUI and got to work on
+                some of the biggest travel websites in Europe, then spent time in
+                consultancy helping launch Sky Glass, one of those rare projects
+                that actually makes the news. My favourite chapter was ASOS, where
+                I worked deep in the logistics and warehousing systems that keep
+                millions of orders moving.
+              </Paragraph>
+              <Paragraph>
+                I&apos;m back in the fashion and ecommerce world now, working at
+                Frasers Group in Digital Data, building the data pipelines that
+                power some of the biggest fashion names out there.
               </Paragraph>
 
               <Subheading>Outside work</Subheading>
               <Paragraph>
-                Fashion, motorsport, MMA and ice hockey fill a lot of my spare
-                time. I&apos;m also still working on making a decent cup of coffee
-                at home. I write here occasionally about engineering and whatever
-                I&apos;m learning on the job, if you want to follow along.
+                Martial arts, ice hockey and motorsport fill most of my spare
+                time. I live with my dog, love the outdoors, and try to see the
+                world as much as possible. I write here occasionally about my
+                thoughts and whatever I&apos;m picking up as the world spins, if
+                you want to follow along.
               </Paragraph>
             </div>
           </Section>

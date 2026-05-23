@@ -1,15 +1,12 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { isExternalHref } from '@/functions';
 
 interface TextLinkProps {
   href: string;
   children: ReactNode;
   /** Opens in a new tab with accessible labelling */
   external?: boolean;
-}
-
-function isExternalHref(href: string): boolean {
-  return href.startsWith('http://') || href.startsWith('https://');
 }
 
 export default function TextLink({ href, children, external }: TextLinkProps) {

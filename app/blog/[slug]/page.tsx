@@ -8,6 +8,8 @@ import * as runtime from 'react/jsx-runtime';
 import rehypeHighlight from 'rehype-highlight';
 import { getAllPosts, parseFrontmatter, stripFrontmatter } from '@/lib/blog';
 import { siteName, siteUrl } from '@/lib/site';
+import { CategoryTag, OutdatedTag } from '@/components/Blog';
+import { formatDate } from '@/functions';
 import './blog-page.css';
 
 async function getPost(slug: string) {
@@ -21,19 +23,6 @@ async function getPost(slug: string) {
   return fs.readFileSync(filePath, 'utf8');
 }
 
-function formatDate(dateString: string): string {
-  if (!dateString) return '';
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    });
-  } catch {
-    return dateString;
-  }
-}
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = await getAllPosts();
@@ -106,18 +95,19 @@ export default async function BlogPost({
   return (
     <SiteShell backHref="/blog" backLabel="← All articles">
       <article className="blog-post">
-        <header className="flex flex-col gap-6 mb-12">
+        <header className="flex flex-col gap-4 mb-12">
           <h1 className="text-3xl sm:text-4xl site-heading leading-tight">
             {frontmatter.title}
           </h1>
-          <div className="flex flex-wrap gap-4 site-muted">
+          <div className="flex flex-wrap items-center gap-3">
             {frontmatter.date && (
-              <time dateTime={frontmatter.date}>
-                {formatDate(frontmatter.date)}
+              <time dateTime={frontmatter.date} className="site-muted">
+                {formatDate(frontmatter.date, { month: 'long', day: 'numeric', year: 'numeric' })}
               </time>
             )}
-            {frontmatter.category && <span>{frontmatter.category}</span>}
+            {frontmatter.category && <CategoryTag category={frontmatter.category} />}
           </div>
+          {frontmatter.date && <OutdatedTag date={frontmatter.date} />}
         </header>
 
         <div className="blog-post__content prose prose-zinc max-w-none">
