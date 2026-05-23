@@ -1,6 +1,6 @@
 # peteratkinson.co.uk
 
-Personal portfolio and blog site for [Peter Atkinson](https://www.peteratkinson.co.uk), Senior Engineer from Yorkshire, UK.
+Personal portfolio and blog site for [my website](https://www.peteratkinson.co.uk)
 
 Built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **MDX** for blog content.
 

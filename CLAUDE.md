@@ -1,6 +1,6 @@
 # peteratkinson.co.uk
 
-Personal portfolio and blog site for Peter Atkinson, Senior Engineer.
+Personal portfolio and blog site for peteratkinson.co.uk
 
 ## Tech Stack
 
@@ -67,7 +67,7 @@ image: /path/to/image   # optional
 ---
 ```
 
-Posts are sorted newest-first by `date`. Articles older than 90 days get an `OutdatedTag`.
+Posts are sorted newest-first by `date`.
 
 ## Key Files
 
@@ -77,4 +77,3 @@ Posts are sorted newest-first by `date`. Articles older than 90 days get an `Out
 | `src/lib/blog.ts` | `getAllPosts()` — reads and parses all MDX files |
 | `app/feed.xml/route.ts` | RSS feed route handler |
 | `app/sitemap.ts` | Dynamic sitemap entries |
-| `src/components/Blog/BlogClient.tsx` | `formatDate()`, `getArticleAge()`, card rendering |

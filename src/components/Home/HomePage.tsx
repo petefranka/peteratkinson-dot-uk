@@ -8,9 +8,6 @@ export default function HomePage() {
   return (
     <>
       <PersonJsonLd />
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
       <main id="main-content">
         <div className="container lg:ml-32 max-w-5xl flex flex-col gap-32 lg:gap-44 pt-28 pb-16 lg:pb-24 lg:pt-40 px-8">
           <section className="flex flex-col gap-12" aria-labelledby="hero-heading">
