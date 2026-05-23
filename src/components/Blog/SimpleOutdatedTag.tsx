@@ -1,7 +1,6 @@
 'use client';
 
 import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
 import { formatArticleAge } from '@/functions';
 
 export default function SimpleOutdatedTag({ date }: { date: string }) {
@@ -9,12 +8,14 @@ export default function SimpleOutdatedTag({ date }: { date: string }) {
   if (days <= 90) return null;
 
   const age = formatArticleAge(date);
+  const message = `This one's ${age} old. Things may have moved on since.`;
 
   return (
-    <Tippy content={`This one's ${age} old. Things may have moved on since.`} theme="site">
+    <Tippy content={message} theme="site">
       <span
+        data-testid="simple-outdated-tag"
+        aria-label={message}
         className="inline-flex items-center px-3 py-1 rounded-full text-base font-medium border blog-outdated-tag cursor-pointer"
-        aria-label={`This one's ${age} old. Things may have moved on since.`}
       >
         Outdated
       </span>

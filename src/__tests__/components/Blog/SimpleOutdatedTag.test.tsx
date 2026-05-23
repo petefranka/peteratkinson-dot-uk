@@ -22,24 +22,29 @@ describe('SimpleOutdatedTag', () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it('renders "Outdated" for articles over 90 days old', () => {
+  it('renders for articles over 90 days old', () => {
     render(<SimpleOutdatedTag date="2025-11-23" />);
-    expect(screen.getByText('Outdated')).toBeInTheDocument();
+    expect(screen.getByTestId('simple-outdated-tag')).toBeInTheDocument();
+  });
+
+  it('renders "Outdated" label', () => {
+    render(<SimpleOutdatedTag date="2025-11-23" />);
+    expect(screen.getByTestId('simple-outdated-tag')).toHaveTextContent('Outdated');
   });
 
   it('has text-base class for accessibility', () => {
     render(<SimpleOutdatedTag date="2025-11-23" />);
-    expect(screen.getByText('Outdated')).toHaveClass('text-base');
+    expect(screen.getByTestId('simple-outdated-tag')).toHaveClass('text-base');
   });
 
   it('has the blog-outdated-tag styling class', () => {
     render(<SimpleOutdatedTag date="2025-11-23" />);
-    expect(screen.getByText('Outdated')).toHaveClass('blog-outdated-tag');
+    expect(screen.getByTestId('simple-outdated-tag')).toHaveClass('blog-outdated-tag');
   });
 
   it('has an aria-label describing the age in months', () => {
     render(<SimpleOutdatedTag date="2025-11-23" />);
-    expect(screen.getByText('Outdated')).toHaveAttribute(
+    expect(screen.getByTestId('simple-outdated-tag')).toHaveAttribute(
       'aria-label',
       "This one's 6 months old. Things may have moved on since."
     );
@@ -47,7 +52,7 @@ describe('SimpleOutdatedTag', () => {
 
   it('has an aria-label describing the age in years', () => {
     render(<SimpleOutdatedTag date="2024-05-23" />);
-    expect(screen.getByText('Outdated')).toHaveAttribute(
+    expect(screen.getByTestId('simple-outdated-tag')).toHaveAttribute(
       'aria-label',
       "This one's 2 years old. Things may have moved on since."
     );

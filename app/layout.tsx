@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DM_Sans, Fraunces } from 'next/font/google';
 import { siteDescription, siteTitle, siteUrl } from '@/lib/site';
 import '../src/index.css';
+import 'tippy.js/dist/tippy.css';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],

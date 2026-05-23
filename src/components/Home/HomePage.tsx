@@ -1,4 +1,5 @@
 import { Section, Article, Paragraph, Subheading, TextLink } from './Section';
+import HeroHeading from './HeroHeading';
 import HomeBlog from './HomeBlog';
 import PageNav from './PageNav';
 import SiteFooter from './SiteFooter';
@@ -12,13 +13,7 @@ export default function HomePage() {
         <div className="container lg:ml-32 max-w-5xl flex flex-col gap-32 lg:gap-44 pt-28 pb-16 lg:pb-24 lg:pt-40 px-8">
           <section className="flex flex-col gap-12" aria-labelledby="hero-heading">
             <div className="site-dot" aria-hidden="true" />
-            <h1
-              id="hero-heading"
-              className="text-4xl sm:text-5xl lg:text-[3.375rem] leading-[1.2] site-heading flex flex-col gap-4 tracking-tight z-10"
-            >
-              <span>Hey</span>
-              <span>I&apos;m Pete, a Senior Engineer from Yorkshire, UK.</span>
-            </h1>
+            <HeroHeading />
             <PageNav />
           </section>
 
@@ -89,7 +84,7 @@ export default function HomePage() {
             </div>
             <div className="mt-10">
               <Paragraph>
-                <TextLink href="https://www.linkedin.com/in/peteratkinson" external>
+                <TextLink href="https://www.linkedin.com/in/peteratkinson1" external>
                   View full work history on LinkedIn
                 </TextLink>
               </Paragraph>
@@ -102,10 +97,6 @@ export default function HomePage() {
                 I&apos;ve been in tech for over ten years. I enjoy the work most
                 when there&apos;s a genuine problem to solve and the codebase still
                 makes sense when you return to it months later.
-              </Paragraph>
-              <Paragraph>
-                I&apos;m not chasing the latest framework for the sake of it. I
-                prefer shipping something useful and keeping it running well.
               </Paragraph>
 
               <Subheading>Where I&apos;ve been</Subheading>
@@ -155,7 +146,7 @@ export default function HomePage() {
                 general.{' '}
                 <TextLink href="mailto:peter@peteratkinson.co.uk">Email me</TextLink>{' '}
                 or say hi on{' '}
-                <TextLink href="https://www.linkedin.com/in/peteratkinson" external>
+                <TextLink href="https://www.linkedin.com/in/peteratkinson1" external>
                   LinkedIn
                 </TextLink>
                 .

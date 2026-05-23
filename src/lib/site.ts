@@ -6,5 +6,5 @@ export const siteTitle = 'Peter Atkinson - Senior Engineer';
 export const siteDescription =
   'Senior Engineer from Yorkshire, UK. Currently at Frasers Group, Digital Data Team.';
 
-export const linkedInUrl = 'https://www.linkedin.com/in/peteratkinson';
+export const linkedInUrl = 'https://www.linkedin.com/in/peteratkinson1';
 export const email = 'peter@peteratkinson.co.uk';

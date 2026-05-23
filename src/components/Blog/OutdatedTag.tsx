@@ -1,3 +1,5 @@
+'use client';
+
 import { formatArticleAge } from '@/functions';
 
 interface OutdatedTagProps {
@@ -11,7 +13,7 @@ export default function OutdatedTag({ date }: OutdatedTagProps) {
   const age = formatArticleAge(date);
 
   return (
-    <aside className="blog-outdated" aria-label="Article age notice">
+    <aside data-testid="outdated-tag" className="blog-outdated" aria-label="Article age notice">
       <p>
         This one&apos;s {age} old. Things may have moved on since.
       </p>
