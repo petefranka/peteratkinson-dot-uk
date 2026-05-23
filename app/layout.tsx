@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { DM_Sans, Fraunces } from 'next/font/google';
+import Script from 'next/script';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { siteDescription, siteTitle, siteUrl } from '@/lib/site';
 import '../src/index.css';
 import 'tippy.js/dist/tippy.css';
@@ -50,7 +52,16 @@ export default function RootLayout({
     <html lang="en-GB" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body className="font-sans bg-matte text-ink-body text-base antialiased">
         {children}
+        <VercelAnalytics />
       </body>
+      {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+          strategy="afterInteractive"
+        />
+      )}
     </html>
   );
 }

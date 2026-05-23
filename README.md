@@ -2,7 +2,7 @@
 
 Personal portfolio and blog site for [my website](https://www.peteratkinson.co.uk)
 
-Built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **MDX** for blog content.
+Built with **Next.js 16**, **TypeScript**, **Tailwind CSS**, and **MDX** for blog content.
 
 ## Getting started
 
@@ -14,6 +14,27 @@ npm install
 npm run dev
 # → http://localhost:3000
 ```
+
+## Environment variables
+
+Create a `.env.local` file in the project root:
+
+```sh
+# Umami analytics — get this from your Umami project settings
+# Analytics only loads when this is set
+NEXT_PUBLIC_UMAMI_WEBSITE_ID=your-website-id-here
+```
+
+In production, set `NEXT_PUBLIC_UMAMI_WEBSITE_ID` in Vercel under Settings → Environment Variables.
+
+## Analytics
+
+Two analytics providers are wired up in `app/layout.tsx`:
+
+| Provider | Config |
+|---|---|
+| **Vercel Analytics** | Zero-config — enabled automatically on Vercel, no env var needed |
+| **Umami** | Requires `NEXT_PUBLIC_UMAMI_WEBSITE_ID` — script only loads when the var is set |
 
 ## Scripts
 
@@ -27,8 +48,8 @@ npm run dev
 
 ## Tech stack
 
-- [Next.js 15](https://nextjs.org) — App Router
-- [React 18](https://react.dev)
+- [Next.js 16](https://nextjs.org) — App Router
+- [React 19](https://react.dev)
 - [TypeScript](https://www.typescriptlang.org)
 - [Tailwind CSS](https://tailwindcss.com)
 - [MDX](https://mdxjs.com) — blog content

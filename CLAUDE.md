@@ -214,6 +214,17 @@ GitHub Actions in `.github/workflows/`:
 - `deploy-application-to-vercel.yml` — `workflow_call` only; production deploy
 - `create-preview-in-vercel.yml` — `workflow_call` only; PR preview deploy
 
+## Analytics
+
+Both providers are wired up in `app/layout.tsx`:
+
+| Provider | Package | Behaviour |
+|---|---|---|
+| **Vercel Analytics** | `@vercel/analytics/next` | Zero-config. `<VercelAnalytics />` is always rendered — Vercel activates it automatically in production. |
+| **Umami** | `next/script` | `<Script>` only renders when `NEXT_PUBLIC_UMAMI_WEBSITE_ID` is set. Set this in Vercel env vars for production and in `.env.local` for local testing. |
+
+Do not add a third analytics provider without removing one of the existing ones.
+
 ## Key Constants
 
 All in `src/lib/site.ts`:
