@@ -116,7 +116,7 @@
   }
 
   .site-article {
-    @apply pt-10 first:pt-0;
+    @apply pt-8 first:pt-0;
   }
 
   .site-article-title {

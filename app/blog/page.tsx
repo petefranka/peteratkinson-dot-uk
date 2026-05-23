@@ -57,7 +57,7 @@ export default async function BlogPage() {
         {posts.length > 0 ? (
           <ul className="flex flex-col gap-8 divide-y site-divide list-none">
             {posts.map((post) => (
-              <li key={post.slug}>
+              <li key={post.slug} className="pt-8 first:pt-0">
                 <article className="site-article">
                   <h3 className="site-article-title">
                     <Link href={`/blog/${post.slug}`} className="site-link">
