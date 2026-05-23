@@ -10,7 +10,6 @@ Personal portfolio and blog site for Peter Atkinson, Senior Engineer.
 - **Tailwind CSS** + custom CSS per-component
 - **MDX** for blog posts (`content/blog/*.mdx`)
 - **Framer Motion** for animations
-- **shadcn/ui** + Radix UI component library
 - **Vitest** + Testing Library for tests
 
 ## Project Structure
@@ -22,12 +21,7 @@ app/                  # Next.js App Router (pages, layouts, route handlers)
   sitemap.ts          # Dynamic sitemap
 src/
   components/         # React components
-    Blog/             # Blog listing & cards (BlogClient is client component)
     Home/             # Homepage sections (Section, TextLink, PageNav, etc.)
-    NavLink.tsx       # Active-state-aware navigation link
-    ui/               # shadcn/ui components (auto-generated, don't hand-edit)
-  hooks/
-    use-mobile.tsx    # matchMedia hook for responsive behaviour
   lib/
     blog.ts           # MDX file parsing and getAllPosts()
     slug.ts           # slugifyTitle() utility

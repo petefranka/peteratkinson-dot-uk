@@ -55,15 +55,13 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     let files: string[];
     try {
       files = await readdir(postsDirectory);
-    } catch (error: any) {
-      console.error('Blog directory error:', postsDirectory, error?.message || error);
+    } catch {
       return [];
     }
 
     const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
-    
+
     if (mdxFiles.length === 0) {
-      console.log('No MDX files found in blog directory');
       return [];
     }
 
@@ -73,35 +71,17 @@ export async function getAllPosts(): Promise<BlogPost[]> {
           const slug = file.replace(/\.mdx$/, '');
           const filePath = path.join(postsDirectory, file);
           const fileContents = await readFile(filePath, 'utf8');
-          
-          // Extract frontmatter
-          const frontmatterMatch = fileContents.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
-          if (frontmatterMatch) {
-            const frontmatter = frontmatterMatch[1];
-            const titleMatch = frontmatter.match(/title:\s*(.+)/);
-            const dateMatch = frontmatter.match(/date:\s*(.+)/);
-            const excerptMatch = frontmatter.match(/excerpt:\s*(.+)/);
-            const categoryMatch = frontmatter.match(/category:\s*(.+)/);
-            const imageMatch = frontmatter.match(/image:\s*(.+)/);
-            
-            return {
-              slug,
-              title: titleMatch ? titleMatch[1].trim().replace(/^["']|["']$/g, '') : slug,
-              date: dateMatch ? dateMatch[1].trim().replace(/^["']|["']$/g, '') : '',
-              excerpt: excerptMatch ? excerptMatch[1].trim().replace(/^["']|["']$/g, '') : undefined,
-              category: categoryMatch ? categoryMatch[1].trim().replace(/^["']|["']$/g, '') : undefined,
-              image: imageMatch ? imageMatch[1].trim().replace(/^["']|["']$/g, '') : undefined,
-            };
-          }
-          
+          const frontmatter = parseFrontmatter(fileContents);
+
           return {
             slug,
-            title: slug,
-            date: '',
+            title: frontmatter.title || slug,
+            date: frontmatter.date,
+            excerpt: frontmatter.excerpt,
+            category: frontmatter.category,
+            image: frontmatter.image,
           };
-        } catch (error) {
-          console.error(`Error reading blog post ${file}:`, error);
-          // Return a minimal post object so we don't break the entire list
+        } catch {
           return {
             slug: file.replace(/\.mdx$/, ''),
             title: file.replace(/\.mdx$/, ''),
@@ -110,8 +90,8 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         }
       })
     );
-    
-    const validPosts = posts.filter((post) => post !== null); // Filter out any null posts
+
+    const validPosts = posts.filter((post) => post !== null);
 
     // Sort by date (newest first)
     const sortedPosts = validPosts.sort((a, b) => {
@@ -125,8 +105,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     });
 
     return sortedPosts;
-  } catch (error) {
-    console.error('Error in getAllPosts:', error);
+  } catch {
     return [];
   }
 }
