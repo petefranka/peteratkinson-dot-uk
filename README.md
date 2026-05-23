@@ -1,73 +1,62 @@
-# Welcome to your Lovable project
+# peteratkinson.co.uk
 
-## Project info
+Personal portfolio and blog site for [Peter Atkinson](https://www.peteratkinson.co.uk), Senior Engineer from Yorkshire, UK.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **MDX** for blog content.
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Getting started
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the dev server
 npm run dev
+# → http://localhost:3000
 ```
 
-**Edit a file directly in GitHub**
+## Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run Vitest test suite |
+| `npm run test:watch` | Vitest in watch mode |
 
-**Use GitHub Codespaces**
+## Tech stack
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- [Next.js 15](https://nextjs.org) — App Router
+- [React 18](https://react.dev)
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [MDX](https://mdxjs.com) — blog content
+- [Framer Motion](https://www.framer.com/motion/) — animations
+- [shadcn/ui](https://ui.shadcn.com) — component library
+- [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com)
 
-## What technologies are used for this project?
+## Writing a blog post
 
-This project is built with:
+Add a `.mdx` file to `content/blog/` with this frontmatter:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```yaml
+---
+title: "Your Post Title"
+date: 2025-01-15
+excerpt: A short description shown on listing cards.
+category: Engineering   # optional
+image: /images/post.jpg # optional
+---
 
-## How can I deploy this project?
+Your content here...
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Posts are automatically sorted newest-first and appear on `/blog`. Articles older than 90 days are tagged as potentially outdated.
 
-## Can I connect a custom domain to my Lovable project?
+## RSS feed & sitemap
 
-Yes, you can!
+- RSS: `/feed.xml`
+- Sitemap: `/sitemap.xml`
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Both are generated dynamically from the blog post frontmatter.
