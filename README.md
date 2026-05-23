@@ -34,6 +34,7 @@ Two analytics providers are wired up in `app/layout.tsx`:
 | Provider | Config |
 |---|---|
 | **Vercel Analytics** | Zero-config — enabled automatically on Vercel, no env var needed |
+| **Vercel Speed Insights** | Zero-config — enabled automatically on Vercel, no env var needed |
 | **Umami** | Requires `NEXT_PUBLIC_UMAMI_WEBSITE_ID` — script only loads when the var is set |
 
 ## Scripts
