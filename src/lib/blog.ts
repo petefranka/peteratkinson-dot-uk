@@ -10,6 +10,42 @@ export interface BlogPost {
   image?: string;
 }
 
+export interface PostFrontmatter {
+  title: string;
+  date: string;
+  excerpt?: string;
+  category?: string;
+  image?: string;
+}
+
+export function parseFrontmatter(content: string): PostFrontmatter {
+  const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+  if (!frontmatterMatch) {
+    return { title: '', date: '' };
+  }
+
+  const frontmatter = frontmatterMatch[1];
+  const clean = (value: string) => value.trim().replace(/^["']|["']$/g, '');
+
+  const titleMatch = frontmatter.match(/title:\s*(.+)/);
+  const dateMatch = frontmatter.match(/date:\s*(.+)/);
+  const excerptMatch = frontmatter.match(/excerpt:\s*(.+)/);
+  const categoryMatch = frontmatter.match(/category:\s*(.+)/);
+  const imageMatch = frontmatter.match(/image:\s*(.+)/);
+
+  return {
+    title: titleMatch ? clean(titleMatch[1]) : '',
+    date: dateMatch ? clean(dateMatch[1]) : '',
+    excerpt: excerptMatch ? clean(excerptMatch[1]) : undefined,
+    category: categoryMatch ? clean(categoryMatch[1]) : undefined,
+    image: imageMatch ? clean(imageMatch[1]) : undefined,
+  };
+}
+
+export function stripFrontmatter(content: string): string {
+  return content.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '');
+}
+
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
     // Use process.cwd() for server-side, fallback for edge runtime

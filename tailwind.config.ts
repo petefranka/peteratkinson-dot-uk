@@ -13,7 +13,38 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: [
+          "var(--font-sans)",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+      },
       colors: {
+        matte: {
+          DEFAULT: "#f3e6eb",
+          deep: "#e9d5de",
+        },
+        ink: {
+          DEFAULT: "#1f181b",
+          muted: "#5c4f55",
+          body: "#3f3539",
+        },
+        brand: {
+          DEFAULT: "#7a3349",
+          soft: "#c9a0ad",
+          hover: "#5c2638",
+          400: "#7a3349",
+        },
+        divider: "#dfc8d2",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

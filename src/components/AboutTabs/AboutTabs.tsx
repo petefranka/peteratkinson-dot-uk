@@ -95,7 +95,7 @@ const AboutTabs = () => {
                 <span className="about-tabs__arrow">→</span>
               </h2>
               <p className="about-tabs__description">
-              I've spent the past 10+ years in tech, building up experience across software engineering and digital platforms. I've mainly focused on engineering large-scale enterprise applications for millions of customers worldwide, working with companies like ASOS, TUI, and Sky UK.
+              I&apos;ve spent the past 10+ years in tech, building up experience across software engineering and digital platforms. I&apos;ve mainly focused on engineering large-scale enterprise applications for millions of customers worldwide, working with companies like ASOS, TUI, and Sky UK.
               </p>
               <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="about-tabs__button">Connect with me on LinkedIn</a>
             </div>

@@ -38,7 +38,7 @@ const Hero = () => {
         >
           <div id="about" className="hero__about">
             <p>
-              I currently work as a <strong>Staff Engineer</strong>, building a SaaS platform with a focus on reliability and long-term maintainability. Outside of work, I'm into fashion, motorsports, mixed martial arts, and ice hockey, and occasionally trying to brew the perfect cup of coffee.
+              I currently work as a <strong>Staff Engineer</strong>, building a SaaS platform with a focus on reliability and long-term maintainability. Outside of work, I&apos;m into fashion, motorsports, mixed martial arts, and ice hockey, and occasionally trying to brew the perfect cup of coffee.
             </p>
             <p>
               I specialize in modern web technologies and software design, with a strong emphasis on quality and robustness. My background spans software engineering, reliable system design, and building scalable cloud-based applications. I care deeply about how systems behave in the real world, not just how they look on paper, and about how teams work together to make that happen.
