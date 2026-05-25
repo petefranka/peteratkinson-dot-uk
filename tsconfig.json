@@ -30,6 +30,7 @@
         "./app/*"
       ]
     },
+    "types": ["vitest/globals"],
     "noImplicitAny": false,
     "noUnusedParameters": false,
     "noUnusedLocals": false,
