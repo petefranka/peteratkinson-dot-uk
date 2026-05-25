@@ -16,15 +16,17 @@ export default function SiteShell({
   return (
     <>
       <main id="main-content">
-        <div className="container lg:ml-32 max-w-5xl flex flex-col gap-16 pt-28 pb-16 lg:pt-40 px-8">
+        <div className="container lg:ml-32 max-w-5xl flex flex-col gap-16 pt-28 lg:pt-40 px-8">
           <div className="site-dot" aria-hidden="true" />
           <Link href={backHref} className="site-link w-fit text-lg">
             {backLabel}
           </Link>
           {children}
-          <SiteFooter />
         </div>
       </main>
+      <div className="container lg:ml-32 max-w-5xl px-8 pb-16 lg:pb-24">
+        <SiteFooter />
+      </div>
     </>
   );
 }

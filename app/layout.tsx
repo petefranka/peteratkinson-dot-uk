@@ -62,6 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body className="font-sans bg-matte text-ink-body text-base antialiased">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         {children}
         <VercelAnalytics />
         <VercelSpeedInsights />
