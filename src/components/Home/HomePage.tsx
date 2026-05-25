@@ -5,6 +5,8 @@ import SiteFooter from './SiteFooter';
 import PersonJsonLd from './PersonJsonLd';
 import ValuesAccordion from './ValuesAccordion';
 import WorkAccordion from './WorkAccordion';
+import AvailabilityBadge from './AvailabilityBadge';
+import ScrollIndicator from './ScrollIndicator';
 
 export default function HomePage() {
   return (
@@ -12,9 +14,26 @@ export default function HomePage() {
       <PersonJsonLd />
       <main id="main-content">
         <div className="container lg:ml-32 max-w-5xl flex flex-col gap-32 lg:gap-44 pt-28 lg:pt-40 px-8">
-          <section className="flex flex-col gap-12" aria-labelledby="hero-heading">
+          <section
+            className="flex flex-col min-h-[calc(100vh-7rem)] lg:min-h-[calc(100vh-10rem)]"
+            aria-labelledby="hero-heading"
+          >
             <div className="site-dot" aria-hidden="true" />
-            <HeroHeading />
+            <div className="flex-1 flex flex-col justify-center gap-8">
+              <HeroHeading />
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#get-in-touch"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[var(--accent)] text-[var(--accent)] text-base font-medium
+                    hover:bg-[var(--accent)] hover:text-[var(--bg-matte)] transition-colors
+                    focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-[var(--accent)] focus-visible:outline-offset-[3px]"
+                >
+                  Get in touch
+                </a>
+                <AvailabilityBadge />
+              </div>
+            </div>
+            <ScrollIndicator />
           </section>
 
           <Section title="Values." id="values">
