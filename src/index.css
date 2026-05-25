@@ -2,6 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0 0 0.375rem 0.375rem;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: 0;
+  outline: 3px solid var(--accent-hover);
+  outline-offset: 3px;
+}
+
+@keyframes accordion-open-height {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-open-opacity {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes accordion-close-height {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@keyframes accordion-close-opacity {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.accordion-content[data-state='open'] {
+  animation:
+    accordion-open-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    accordion-open-opacity 0.2s ease-out;
+  animation-fill-mode: forwards;
+}
+
+.accordion-content[data-state='closed'] {
+  animation:
+    accordion-close-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    accordion-close-opacity 0.2s ease-in;
+  animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-content[data-state='open'],
+  .accordion-content[data-state='closed'] {
+    animation: none;
+  }
+}
+
 @layer base {
   :root {
     --bg-matte: #f3e6eb;

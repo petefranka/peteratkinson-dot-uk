@@ -4,46 +4,61 @@ import HomeBlog from './HomeBlog';
 import PageNav from './PageNav';
 import SiteFooter from './SiteFooter';
 import PersonJsonLd from './PersonJsonLd';
+import ValuesAccordion from './ValuesAccordion';
 
 export default function HomePage() {
   return (
     <>
       <PersonJsonLd />
       <main id="main-content">
-        <div className="container lg:ml-32 max-w-5xl flex flex-col gap-32 lg:gap-44 pt-28 pb-16 lg:pb-24 lg:pt-40 px-8">
+        <div className="container lg:ml-32 max-w-5xl flex flex-col gap-32 lg:gap-44 pt-28 lg:pt-40 px-8">
           <section className="flex flex-col gap-12" aria-labelledby="hero-heading">
             <div className="site-dot" aria-hidden="true" />
             <HeroHeading />
             <PageNav />
           </section>
 
-          <Section title="I care about." id="i-care-about">
-            <div className="flex flex-col gap-8 divide-y site-divide">
-              <Article title="Building Reliability">
-                <Paragraph>
-                  I want software that still does what it promised once real users
-                  and real traffic show up. That means caring about architecture,
-                  failure modes and maintainability early, not patching them in
-                  after something breaks in production.
-                </Paragraph>
-              </Article>
-              <Article title="Health in Teams">
-                <Paragraph>
-                  The best technical work happens when people can talk openly,
-                  share context and push back without it becoming personal. I value
-                  psychological safety, clear ownership and teams that can sustain
-                  good work without burning out.
-                </Paragraph>
-              </Article>
-              <Article title="AI in practice">
-                <Paragraph>
-                  AI is changing how we build, and I think the answer is somewhere
-                  between hype and ignoring it. I&apos;m interested in where it
-                  actually helps, where it gets in the way, and how teams adjust as
-                  the tools keep shifting.
-                </Paragraph>
-              </Article>
-            </div>
+          <Section title="Values." id="values">
+            <ValuesAccordion
+              items={[
+                {
+                  value: 'building-reliability',
+                  title: 'Building Reliability',
+                  children: (
+                    <Paragraph>
+                      I want software that still does what it promised once real users
+                      and real traffic show up. That means caring about architecture,
+                      failure modes and maintainability early, not patching them in
+                      after something breaks in production.
+                    </Paragraph>
+                  ),
+                },
+                {
+                  value: 'health-in-teams',
+                  title: 'Health in Teams',
+                  children: (
+                    <Paragraph>
+                      The best technical work happens when people can talk openly,
+                      share context and push back without it becoming personal. I value
+                      psychological safety, clear ownership and teams that can sustain
+                      good work without burning out.
+                    </Paragraph>
+                  ),
+                },
+                {
+                  value: 'ai-in-practice',
+                  title: 'AI in practice',
+                  children: (
+                    <Paragraph>
+                      AI is changing how we build, and I think the answer is somewhere
+                      between hype and ignoring it. I&apos;m interested in where it
+                      actually helps, where it gets in the way, and how teams adjust as
+                      the tools keep shifting.
+                    </Paragraph>
+                  ),
+                },
+              ]}
+            />
           </Section>
 
           <Section title="Work." id="work">
@@ -154,9 +169,11 @@ export default function HomePage() {
             </div>
           </Section>
 
-          <SiteFooter />
         </div>
       </main>
+      <div className="container lg:ml-32 max-w-5xl px-8 pb-16 lg:pb-24">
+        <SiteFooter />
+      </div>
     </>
   );
 }

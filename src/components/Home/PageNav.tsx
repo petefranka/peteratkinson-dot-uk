@@ -1,5 +1,5 @@
 const navItems = [
-  { href: '#i-care-about', label: 'I care about' },
+  { href: '#values', label: 'Values' },
   { href: '#work', label: 'Work' },
   { href: '#about-me', label: 'About' },
   { href: '#my-thoughts', label: 'Thoughts' },
