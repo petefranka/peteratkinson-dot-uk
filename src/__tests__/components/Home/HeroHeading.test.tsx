@@ -18,8 +18,8 @@ describe('HeroHeading', () => {
     expect(screen.getByTestId('hero-heading')).toHaveAttribute('id', 'hero-heading');
   });
 
-  it('renders the full name and title line', () => {
+  it('renders the headline text', () => {
     render(<HeroHeading />);
-    expect(screen.getByText(/I'm Pete, a Senior Engineer from Yorkshire/)).toBeInTheDocument();
+    expect(screen.getByText(/Engineer and writer/)).toBeInTheDocument();
   });
 });
