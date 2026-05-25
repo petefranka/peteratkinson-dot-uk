@@ -17,8 +17,12 @@ vi.mock('framer-motion', () => ({
   motion: {
     div: ({ children, className, style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) =>
       <div className={className} style={style}>{children}</div>,
-    button: React.forwardRef(({ children, className, style, onClick, 'aria-expanded': ariaExpanded, 'aria-controls': ariaControls, 'aria-label': ariaLabel }: any, ref: any) =>
-      <button ref={ref} className={className} style={style} onClick={onClick} aria-expanded={ariaExpanded} aria-controls={ariaControls} aria-label={ariaLabel}>{children}</button>),
+    button: React.forwardRef(function MotionButton(
+      { children, className, style, onClick, 'aria-expanded': ariaExpanded, 'aria-controls': ariaControls, 'aria-label': ariaLabel }: any,
+      ref: any
+    ) {
+      return <button ref={ref} className={className} style={style} onClick={onClick} aria-expanded={ariaExpanded} aria-controls={ariaControls} aria-label={ariaLabel}>{children}</button>;
+    }),
     span: ({ children, className, 'aria-hidden': ariaHidden }: { children?: React.ReactNode; className?: string; 'aria-hidden'?: boolean | 'true' | 'false' }) =>
       <span className={className} aria-hidden={ariaHidden}>{children}</span>,
   },
