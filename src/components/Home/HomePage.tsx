@@ -40,20 +40,21 @@ export default function HomePage() {
             <ValuesAccordion
               items={[
                 {
-                  value: 'building-reliability',
-                  title: 'Building Reliability',
+                  value: 'accessibility',
+                  title: 'Accessibility',
                   children: (
                     <Paragraph>
-                      I want software that still does what it promised once real users
-                      and real traffic show up. That means caring about architecture,
-                      failure modes and maintainability early, not patching them in
-                      after something breaks in production.
+                      The web should work for everyone, but right now only 3.7% the web
+                      are free of detectable WCAG failures. That means the
+                      vast majority of the web is shutting people out without even
+                      realising it. I think that&apos;s worth caring about, and it&apos;s
+                      something I actively try to fix in everything I build.
                     </Paragraph>
                   ),
                 },
                 {
-                  value: 'health-in-teams',
-                  title: 'Health in Teams',
+                  value: 'people',
+                  title: 'People',
                   children: (
                     <Paragraph>
                       The best technical work happens when people can talk openly,

@@ -2,7 +2,6 @@ export default function ChevronIcon() {
   return (
     <svg
       aria-hidden="true"
-      focusable="false"
       data-testid="chevron-icon"
       width="24"
       height="24"
