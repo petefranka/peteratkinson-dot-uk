@@ -48,7 +48,7 @@ import SiteShell from '@/components/Home/SiteShell';
 import TextLink from '@/components/Home/TextLink';
 import ValuesAccordion from '@/components/Home/ValuesAccordion';
 import WorkAccordion from '@/components/Home/WorkAccordion';
-import BlogList from '@app/blog/BlogList';
+import BlogList from '../../../app/blog/BlogList';
 
 const valuesItems = [
   { value: 'first', title: 'First Item', children: <p>First content</p> },
