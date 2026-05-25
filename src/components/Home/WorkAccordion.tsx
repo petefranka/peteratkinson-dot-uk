@@ -51,26 +51,25 @@ interface WorkAccordionProps {
 const DESKTOP_MQ = '(min-width: 1024px)';
 
 export default function WorkAccordion({ items }: WorkAccordionProps) {
-  const [openItems, setOpenItems] = useState<string[]>(
-    items.length > 0 ? [items[0].value] : []
-  );
+  // null = not yet hydrated (SSR + first client render)
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const allValues = items.map((i) => i.value);
-    const firstValues = allValues.slice(0, 1);
     const mq = window.matchMedia(DESKTOP_MQ);
-    const update = (matches: boolean) => setOpenItems(matches ? allValues : firstValues);
-    update(mq.matches);
-    const handler = (e: MediaQueryListEvent) => update(e.matches);
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
+
+  const allValues = items.map((i) => i.value);
+  const firstValues = allValues.slice(0, 1);
 
   return (
     <Accordion.Root
+      key={isDesktop === null ? 'ssr' : isDesktop ? 'desktop' : 'mobile'}
       type="multiple"
-      value={openItems}
-      onValueChange={setOpenItems}
+      defaultValue={isDesktop === true ? allValues : firstValues}
       data-testid="work-accordion"
       className="flex flex-col gap-8"
     >
