@@ -25,7 +25,7 @@ export default function ReadingProgress() {
       aria-valuemax={100}
       data-testid="reading-progress"
       className="fixed top-0 left-0 z-50 h-[5px] motion-reduce:transition-none transition-[width] duration-100"
-      style={{ width: `${progress}%`, backgroundColor: 'var(--accent-soft)' }}
+      style={{ width: `${progress}%`, background: 'linear-gradient(to right, var(--accent-soft), var(--accent))' }}
     />
   );
 }
