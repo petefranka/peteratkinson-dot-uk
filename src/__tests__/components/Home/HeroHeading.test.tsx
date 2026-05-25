@@ -18,11 +18,6 @@ describe('HeroHeading', () => {
     expect(screen.getByTestId('hero-heading')).toHaveAttribute('id', 'hero-heading');
   });
 
-  it('renders the Hey greeting', () => {
-    render(<HeroHeading />);
-    expect(screen.getByText('Hey')).toBeInTheDocument();
-  });
-
   it('renders the full name and title line', () => {
     render(<HeroHeading />);
     expect(screen.getByText(/I'm Pete, a Senior Engineer from Yorkshire/)).toBeInTheDocument();

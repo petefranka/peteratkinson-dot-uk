@@ -24,7 +24,7 @@ export default function SiteShell({
           {children}
         </div>
       </main>
-      <div className="container lg:ml-32 max-w-5xl px-8 pb-16 lg:pb-24">
+      <div className="container lg:ml-32 max-w-5xl px-8 pb-16 lg:pb-24 mt-16">
         <SiteFooter />
       </div>
     </>

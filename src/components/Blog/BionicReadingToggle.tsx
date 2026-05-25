@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
-import Tippy from '@tippyjs/react';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 const STORAGE_KEY = 'bionic-reading';
 
@@ -74,7 +74,6 @@ export default function BionicReadingToggle({ contentSelector }: { contentSelect
     localStorage.removeItem(STORAGE_KEY);
   }, [getContent]);
 
-  // Restore preference on mount
   useEffect(() => {
     if (localStorage.getItem(STORAGE_KEY) === '1') {
       enable();
@@ -92,22 +91,29 @@ export default function BionicReadingToggle({ contentSelector }: { contentSelect
   }, [enabled, enable, disable]);
 
   return (
-    <Tippy
-      content="Bolds the first half of each word to guide your eye. Designed to help people with ADHD and dyslexia improve focus and reading speed."
-      theme="site"
-    >
-      <button
-        data-testid="bionic-reading-toggle"
-        onClick={toggle}
-        aria-pressed={enabled}
-        className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-base font-medium border transition-colors cursor-pointer
-          border-[var(--border-subtle)] text-[var(--text-muted)] bg-transparent hover:bg-[var(--bg-matte-deep)] hover:border-[var(--text-muted)] hover:text-[var(--text-body)]
-          aria-pressed:bg-[var(--bg-matte-deep)] aria-pressed:text-[var(--text-heading)] aria-pressed:border-[var(--text-muted)]
-          focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-[var(--accent)] focus-visible:outline-offset-[3px]"
-      >
-        <span aria-hidden="true" className="text-sm leading-none">B</span>
-        {enabled ? 'Turn off Bionic Reading' : 'Turn on Bionic Reading'}
-      </button>
-    </Tippy>
+    <Tooltip.Provider delayDuration={0}>
+      <Tooltip.Root>
+        <Tooltip.Trigger asChild>
+          <button
+            data-testid="bionic-reading-toggle"
+            onClick={toggle}
+            aria-pressed={enabled}
+            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-3 py-1 rounded-full text-base font-medium border transition-colors cursor-pointer
+              border-[var(--border-subtle)] text-[var(--text-muted)] bg-transparent hover:bg-[var(--bg-matte-deep)] hover:border-[var(--text-muted)] hover:text-[var(--text-body)]
+              aria-pressed:bg-[var(--bg-matte-deep)] aria-pressed:text-[var(--text-heading)] aria-pressed:border-[var(--text-muted)]
+              focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-[var(--accent)] focus-visible:outline-offset-[3px]"
+          >
+            <span aria-hidden="true" className="text-sm leading-none">B</span>
+            {enabled ? 'Turn off Bionic Reading' : 'Turn on Bionic Reading'}
+          </button>
+        </Tooltip.Trigger>
+        <Tooltip.Portal>
+          <Tooltip.Content className="site-tooltip" sideOffset={6}>
+            Bolds the first half of each word to guide your eye. Designed to help people with ADHD and dyslexia improve focus and reading speed.
+            <Tooltip.Arrow className="site-tooltip-arrow" />
+          </Tooltip.Content>
+        </Tooltip.Portal>
+      </Tooltip.Root>
+    </Tooltip.Provider>
   );
 }

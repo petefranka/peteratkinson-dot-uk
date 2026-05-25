@@ -4,8 +4,8 @@ import Script from 'next/script';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights as VercelSpeedInsights } from '@vercel/speed-insights/next';
 import { siteDescription, siteName, siteTitle, siteUrl } from '@/lib/site';
+import HamburgerMenu from '@/components/Home/HamburgerMenu';
 import '../src/index.css';
-import 'tippy.js/dist/tippy.css';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -63,6 +63,7 @@ export default function RootLayout({
     <html lang="en-GB" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body className="font-sans bg-matte text-ink-body text-base antialiased">
         <a href="#main-content" className="skip-link">Skip to main content</a>
+        <HamburgerMenu />
         {children}
         <VercelAnalytics />
         <VercelSpeedInsights />

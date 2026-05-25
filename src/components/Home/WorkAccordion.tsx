@@ -4,27 +4,35 @@ import * as Accordion from '@radix-ui/react-accordion';
 import { ReactNode, useState, useEffect } from 'react';
 import ChevronIcon from './ChevronIcon';
 
-interface ValuesItem {
+interface WorkItem {
   value: string;
   title: string;
+  date?: string;
   children: ReactNode;
 }
 
-function ValuesAccordionItem({ value, title, children }: ValuesItem) {
+function WorkAccordionItem({ value, title, date, children }: WorkItem) {
   return (
     <Accordion.Item
       value={value}
-      data-testid="accordion-item"
+      data-testid="work-accordion-item"
       className="border-t border-[var(--border-subtle)] first:border-t-0 pt-8 first:pt-0"
     >
       <Accordion.Header asChild>
         <h3 className="site-article-title">
           <Accordion.Trigger
-            data-testid="accordion-trigger"
+            data-testid="work-accordion-trigger"
             className="flex items-center justify-between w-full text-left gap-4 group
               focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-[var(--accent)] focus-visible:outline-offset-[3px] rounded-sm"
           >
-            <span>{title}</span>
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0">
+              <span>{title}</span>
+              {date && (
+                <span className="italic text-base font-sans font-normal text-[var(--text-muted)]">
+                  {date}
+                </span>
+              )}
+            </div>
             <ChevronIcon />
           </Accordion.Trigger>
         </h3>
@@ -36,13 +44,13 @@ function ValuesAccordionItem({ value, title, children }: ValuesItem) {
   );
 }
 
-interface ValuesAccordionProps {
-  items: Omit<ValuesItem, never>[];
+interface WorkAccordionProps {
+  items: WorkItem[];
 }
 
 const DESKTOP_MQ = '(min-width: 1024px)';
 
-export default function ValuesAccordion({ items }: ValuesAccordionProps) {
+export default function WorkAccordion({ items }: WorkAccordionProps) {
   // null = not yet hydrated (SSR + first client render)
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
 
@@ -62,11 +70,11 @@ export default function ValuesAccordion({ items }: ValuesAccordionProps) {
       key={isDesktop === null ? 'ssr' : isDesktop ? 'desktop' : 'mobile'}
       type="multiple"
       defaultValue={isDesktop === true ? allValues : firstValues}
-      data-testid="values-accordion"
+      data-testid="work-accordion"
       className="flex flex-col gap-8"
     >
       {items.map((item) => (
-        <ValuesAccordionItem key={item.value} {...item} />
+        <WorkAccordionItem key={item.value} {...item} />
       ))}
     </Accordion.Root>
   );

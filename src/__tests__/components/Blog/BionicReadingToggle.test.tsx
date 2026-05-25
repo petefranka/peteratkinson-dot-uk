@@ -1,8 +1,13 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 
-vi.mock('@tippyjs/react', () => ({
-  default: ({ children }: { children: React.ReactElement }) => children,
+vi.mock('@radix-ui/react-tooltip', () => ({
+  Provider: ({ children }: { children: React.ReactNode }) => children,
+  Root: ({ children }: { children: React.ReactNode }) => children,
+  Trigger: ({ children }: { children: React.ReactNode }) => children,
+  Portal: ({ children }: { children: React.ReactNode }) => children,
+  Content: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  Arrow: () => null,
 }));
 
 import BionicReadingToggle from '@/components/Blog/BionicReadingToggle';

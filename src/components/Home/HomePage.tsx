@@ -1,10 +1,10 @@
-import { Section, Article, Paragraph, Subheading, TextLink } from './Section';
+import { Section, Paragraph, Subheading, TextLink } from './Section';
 import HeroHeading from './HeroHeading';
 import HomeBlog from './HomeBlog';
-import PageNav from './PageNav';
 import SiteFooter from './SiteFooter';
 import PersonJsonLd from './PersonJsonLd';
 import ValuesAccordion from './ValuesAccordion';
+import WorkAccordion from './WorkAccordion';
 
 export default function HomePage() {
   return (
@@ -15,7 +15,6 @@ export default function HomePage() {
           <section className="flex flex-col gap-12" aria-labelledby="hero-heading">
             <div className="site-dot" aria-hidden="true" />
             <HeroHeading />
-            <PageNav />
           </section>
 
           <Section title="Values." id="values">
@@ -62,41 +61,68 @@ export default function HomePage() {
           </Section>
 
           <Section title="Work." id="work">
-            <div className="flex flex-col gap-8 divide-y site-divide">
-              <Article title="Frasers Group">
-                <Paragraph>
-                  Right now I&apos;m in the Digital Data Team at Frasers, building
-                  rich data pipelines that feed digital experiences across Sports
-                  Direct, Frasers, GAME, Evans Cycles and Jack Wills.
-                </Paragraph>
-              </Article>
-              <Article title="Heatly">
-                <Paragraph>
-                  Before that I was Staff Engineer at Heatly, a SaaS platform for
-                  heat pump installations. I worked on architecture and tooling
-                  from the first survey through to project completion.
-                </Paragraph>
-              </Article>
-              <Article title="ASOS">
-                <Paragraph>
-                  At ASOS I built warehousing software for their logistics platform,
-                  covering stock intake, reconciliation, returns and orders with
-                  tracking across the global supply chain.
-                </Paragraph>
-              </Article>
-              <Article title="Sky">
-                <Paragraph>
-                  At Sky I worked on Glass, mainly streaming and entertainment
-                  features for their next-generation TV platform.
-                </Paragraph>
-              </Article>
-              <Article title="TUI">
-                <Paragraph>
-                  At TUI I helped build booking platforms used by millions of
-                  travellers, including a dedicated travel site for the NHS.
-                </Paragraph>
-              </Article>
-            </div>
+            <WorkAccordion
+              items={[
+                {
+                  value: 'frasers-group',
+                  title: 'Frasers Group',
+                  date: 'Present',
+                  children: (
+                    <Paragraph>
+                      Right now I&apos;m in the Digital Data Team at Frasers, building
+                      rich data pipelines that feed digital experiences across Sports
+                      Direct, Frasers, GAME, Evans Cycles and Jack Wills.
+                    </Paragraph>
+                  ),
+                },
+                {
+                  value: 'heatly',
+                  title: 'Heatly',
+                  date: "Dec '25 – Mar '26",
+                  children: (
+                    <Paragraph>
+                      Before that I was Staff Engineer at Heatly, a SaaS platform for
+                      heat pump installations. I worked on architecture and tooling
+                      from the first survey through to project completion.
+                    </Paragraph>
+                  ),
+                },
+                {
+                  value: 'asos',
+                  title: 'ASOS',
+                  date: "Aug '22 – Dec '25",
+                  children: (
+                    <Paragraph>
+                      At ASOS I built warehousing software for their logistics platform,
+                      covering stock intake, reconciliation, returns and orders with
+                      tracking across the global supply chain.
+                    </Paragraph>
+                  ),
+                },
+                {
+                  value: 'sky',
+                  title: 'Sky',
+                  date: "Nov '21 – Aug '22",
+                  children: (
+                    <Paragraph>
+                      At Sky I worked on Glass, mainly streaming and entertainment
+                      features for their next-generation TV platform.
+                    </Paragraph>
+                  ),
+                },
+                {
+                  value: 'tui',
+                  title: 'TUI',
+                  date: "Aug '18 – Aug '21",
+                  children: (
+                    <Paragraph>
+                      At TUI I helped build booking platforms used by millions of
+                      travellers, including a dedicated travel site for the NHS.
+                    </Paragraph>
+                  ),
+                },
+              ]}
+            />
             <div className="mt-10">
               <Paragraph>
                 <TextLink href="https://www.linkedin.com/in/peteratkinson1" external>
@@ -171,7 +197,7 @@ export default function HomePage() {
 
         </div>
       </main>
-      <div className="container lg:ml-32 max-w-5xl px-8 pb-16 lg:pb-24">
+      <div className="container lg:ml-32 max-w-5xl px-8 pb-16 lg:pb-24 mt-32 lg:mt-44">
         <SiteFooter />
       </div>
     </>
