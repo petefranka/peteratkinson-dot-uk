@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CategoryTag, SimpleOutdatedTag } from '@/components/Blog';
-import { formatDate } from '@/functions';
+import { formatRelativeDate } from '@/functions';
 
 interface Post {
   slug: string;
@@ -12,6 +12,7 @@ interface Post {
   date: string;
   excerpt?: string;
   category?: string;
+  readingTime?: string;
 }
 
 
@@ -68,9 +69,10 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                       <div className="flex flex-wrap items-center gap-3 mb-6">
                         {post.date && (
                           <p className="site-muted">
-                            <time dateTime={post.date}>{formatDate(post.date)}</time>
+                            <time dateTime={post.date}>{formatRelativeDate(post.date)}</time>
                           </p>
                         )}
+                        {post.readingTime && <span className="site-muted">{post.readingTime}</span>}
                         <span className="inline-flex items-center gap-2">
                           {post.category && <CategoryTag category={post.category} />}
                           {post.date && <SimpleOutdatedTag date={post.date} />}

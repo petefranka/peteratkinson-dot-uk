@@ -8,8 +8,8 @@ import * as runtime from 'react/jsx-runtime';
 import rehypeHighlight from 'rehype-highlight';
 import { getAllPosts, parseFrontmatter, stripFrontmatter } from '@/lib/blog';
 import { siteName, siteTitle, siteUrl } from '@/lib/site';
-import { BionicReadingToggle, BlogPostJsonLd, CategoryTag, OutdatedTag } from '@/components/Blog';
-import { formatDate } from '@/functions';
+import { BionicReadingToggle, BlogPostJsonLd, CategoryTag, CopyLink, OutdatedTag, PostNav, ReadingProgress } from '@/components/Blog';
+import { formatDate, formatRelativeDate, getReadingTime } from '@/functions';
 import './blog-page.css';
 
 async function getPost(slug: string) {
@@ -98,6 +98,12 @@ export default async function BlogPost({
   const frontmatter = parseFrontmatter(post);
   const contentWithoutFrontmatter = stripFrontmatter(post);
 
+  const allPosts = await getAllPosts();
+  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
+  const prev = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : undefined;
+  const next = currentIndex > 0 ? allPosts[currentIndex - 1] : undefined;
+  const readingTime = getReadingTime(contentWithoutFrontmatter);
+
   const { default: MDXContent } = await evaluate(contentWithoutFrontmatter, {
     ...runtime,
     baseUrl: import.meta.url,
@@ -105,36 +111,42 @@ export default async function BlogPost({
   });
 
   return (
-    <SiteShell backHref="/blog" backLabel="← All articles">
-      <BlogPostJsonLd
-        slug={slug}
-        title={frontmatter.title}
-        date={frontmatter.date}
-        excerpt={frontmatter.excerpt}
-        category={frontmatter.category}
-        image={frontmatter.image}
-      />
-      <article className="blog-post">
-        <header className="flex flex-col gap-4 mb-12">
-          <h1 className="text-3xl sm:text-4xl site-heading leading-tight">
-            {frontmatter.title}
-          </h1>
-          <div className="flex flex-wrap items-center gap-3">
-            {frontmatter.date && (
-              <time dateTime={frontmatter.date} className="site-muted">
-                {formatDate(frontmatter.date, { month: 'long', day: 'numeric', year: 'numeric' })}
-              </time>
-            )}
-            {frontmatter.category && <CategoryTag category={frontmatter.category} />}
-            <BionicReadingToggle contentSelector=".blog-post__content" />
-          </div>
-          {frontmatter.date && <OutdatedTag date={frontmatter.date} />}
-        </header>
+    <>
+      <ReadingProgress />
+      <SiteShell backHref="/blog" backLabel="← All articles">
+        <BlogPostJsonLd
+          slug={slug}
+          title={frontmatter.title}
+          date={frontmatter.date}
+          excerpt={frontmatter.excerpt}
+          category={frontmatter.category}
+          image={frontmatter.image}
+        />
+        <article className="blog-post">
+          <header className="flex flex-col gap-4 mb-12">
+            <h1 className="text-3xl sm:text-4xl site-heading leading-tight">
+              {frontmatter.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-3">
+              {frontmatter.date && (
+                <time dateTime={frontmatter.date} className="site-muted">
+                  {formatRelativeDate(frontmatter.date)}
+                </time>
+              )}
+              <span className="site-muted">{readingTime}</span>
+              {frontmatter.category && <CategoryTag category={frontmatter.category} />}
+              <BionicReadingToggle contentSelector=".blog-post__content" />
+              <CopyLink />
+            </div>
+            {frontmatter.date && <OutdatedTag date={frontmatter.date} />}
+          </header>
 
-        <div className="blog-post__content prose prose-zinc max-w-none">
-          <MDXContent />
-        </div>
-      </article>
-    </SiteShell>
+          <div className="blog-post__content prose prose-zinc max-w-none">
+            <MDXContent />
+          </div>
+        </article>
+        <PostNav prev={prev} next={next} />
+      </SiteShell>
+    </>
   );
 }

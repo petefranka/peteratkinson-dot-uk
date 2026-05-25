@@ -105,6 +105,9 @@ All tests live in `src/__tests__/`, mirroring the source structure. The vitest c
 | `SimpleOutdatedTag` | `simple-outdated-tag` |
 | `HeroHeading` | `hero-heading` |
 | `BionicReadingToggle` | `bionic-reading-toggle` |
+| `CopyLink` | `copy-link` |
+| `PostNav` | `post-nav` |
+| `ReadingProgress` | `reading-progress` |
 
 ## Blog Posts
 

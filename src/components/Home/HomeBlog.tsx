@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/blog';
 import { Article, Paragraph } from './Section';
 import { CategoryTag, SimpleOutdatedTag } from '@/components/Blog';
-import { formatDate } from '@/functions';
+import { formatRelativeDate } from '@/functions';
 
 export default async function HomeBlog() {
   let posts: Awaited<ReturnType<typeof getAllPosts>> = [];
@@ -25,9 +25,10 @@ export default async function HomeBlog() {
           <div className="flex flex-wrap items-center gap-3 mb-6">
             {post.date && (
               <time className="site-muted" dateTime={post.date}>
-                {formatDate(post.date, { month: 'short', year: 'numeric' })}
+                {formatRelativeDate(post.date)}
               </time>
             )}
+            {post.readingTime && <span className="site-muted">{post.readingTime}</span>}
             <span className="inline-flex items-center gap-2">
               {post.category && <CategoryTag category={post.category} />}
               {post.date && <SimpleOutdatedTag date={post.date} />}
