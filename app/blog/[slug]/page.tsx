@@ -8,7 +8,7 @@ import * as runtime from 'react/jsx-runtime';
 import rehypeHighlight from 'rehype-highlight';
 import { getAllPosts, parseFrontmatter, stripFrontmatter } from '@/lib/blog';
 import { siteName, siteTitle, siteUrl } from '@/lib/site';
-import { BlogPostJsonLd, CategoryTag, OutdatedTag } from '@/components/Blog';
+import { BionicReadingToggle, BlogPostJsonLd, CategoryTag, OutdatedTag } from '@/components/Blog';
 import { formatDate } from '@/functions';
 import './blog-page.css';
 
@@ -126,6 +126,7 @@ export default async function BlogPost({
               </time>
             )}
             {frontmatter.category && <CategoryTag category={frontmatter.category} />}
+            <BionicReadingToggle contentSelector=".blog-post__content" />
           </div>
           {frontmatter.date && <OutdatedTag date={frontmatter.date} />}
         </header>
