@@ -55,7 +55,7 @@ export default function HamburgerMenu() {
     <>
       {/* Button — right-aligned with content, vertically centred with the site-dot */}
       <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
-        <div className="container lg:ml-32 max-w-5xl px-8 flex justify-end pt-[26px]">
+        <div className="container lg:ml-32 max-w-5xl px-8 flex justify-end pt-[6.125rem] lg:pt-[26px]">
           <motion.button
             ref={buttonRef}
             data-testid="hamburger-button"
