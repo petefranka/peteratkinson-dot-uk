@@ -1,5 +1,6 @@
 import { readdir, readFile } from 'fs/promises';
 import path from 'path';
+import { getReadingTime } from '@/functions';
 
 export interface BlogPost {
   slug: string;
@@ -8,6 +9,7 @@ export interface BlogPost {
   excerpt?: string;
   category?: string;
   image?: string;
+  readingTime: string;
 }
 
 export interface PostFrontmatter {
@@ -80,12 +82,14 @@ export async function getAllPosts(): Promise<BlogPost[]> {
             excerpt: frontmatter.excerpt,
             category: frontmatter.category,
             image: frontmatter.image,
+            readingTime: getReadingTime(stripFrontmatter(fileContents)),
           };
         } catch {
           return {
             slug: file.replace(/\.mdx$/, ''),
             title: file.replace(/\.mdx$/, ''),
             date: '',
+            readingTime: '1 min read',
           };
         }
       })

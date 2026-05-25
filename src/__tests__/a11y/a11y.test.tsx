@@ -39,7 +39,7 @@ vi.mock('@radix-ui/react-tooltip', () => ({
 }));
 
 import HeroHeading from '@/components/Home/HeroHeading';
-import { CategoryTag, OutdatedTag, SimpleOutdatedTag } from '@/components/Blog';
+import { CategoryTag, CopyLink, OutdatedTag, PostNav, ReadingProgress, SimpleOutdatedTag } from '@/components/Blog';
 import BionicReadingToggle from '@/components/Blog/BionicReadingToggle';
 import AvailabilityBadge from '@/components/Home/AvailabilityBadge';
 import ChevronIcon from '@/components/Home/ChevronIcon';
@@ -65,9 +65,11 @@ const workItems = [
 ];
 
 const posts = [
-  { slug: 'post-a', title: 'Alpha Post', date: '2024-01-01', excerpt: 'About alpha.', category: 'Engineering' },
-  { slug: 'post-b', title: 'Beta Post', date: '2024-02-01', excerpt: 'About beta.', category: 'Design' },
+  { slug: 'post-a', title: 'Alpha Post', date: '2024-01-01', excerpt: 'About alpha.', category: 'Engineering', readingTime: '2 min read' },
+  { slug: 'post-b', title: 'Beta Post', date: '2024-02-01', excerpt: 'About beta.', category: 'Design', readingTime: '1 min read' },
 ];
+
+const postNavItem = { slug: 'some-post', title: 'Some Post' };
 
 describe('a11y', () => {
   it('AvailabilityBadge has no violations', async () => {
@@ -152,6 +154,22 @@ describe('a11y', () => {
 
   it('BlogList has no violations', async () => {
     const { container } = render(<BlogList posts={posts} />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it('CopyLink has no violations', async () => {
+    Object.assign(navigator, { clipboard: { writeText: vi.fn() } });
+    const { container } = render(<CopyLink />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it('PostNav has no violations', async () => {
+    const { container } = render(<PostNav prev={postNavItem} next={postNavItem} />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it('ReadingProgress has no violations', async () => {
+    const { container } = render(<ReadingProgress />);
     expect(await axe(container)).toHaveNoViolations();
   });
 });
