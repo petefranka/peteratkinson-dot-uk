@@ -15,11 +15,11 @@ export default function HomePage() {
       <main id="main-content">
         <div className="container lg:ml-32 max-w-5xl flex flex-col gap-32 lg:gap-44 pt-28 lg:pt-40 px-8">
           <section
-            className="relative flex flex-col min-h-[calc(100vh-7rem)] lg:min-h-[calc(100vh-10rem)]"
+            className="flex flex-col min-h-[calc(100vh-7rem)] lg:min-h-[calc(100vh-10rem)]"
             aria-labelledby="hero-heading"
           >
             <div className="site-dot" aria-hidden="true" />
-            <div className="flex-1 flex flex-col justify-center gap-8 pb-16">
+            <div className="flex-1 flex flex-col justify-center gap-8">
               <HeroHeading />
               <div className="flex flex-wrap items-center gap-3">
                 <a
@@ -32,8 +32,8 @@ export default function HomePage() {
                 </a>
                 <AvailabilityBadge />
               </div>
+              <ScrollIndicator />
             </div>
-            <ScrollIndicator />
           </section>
 
           <Section title="Values." id="values">

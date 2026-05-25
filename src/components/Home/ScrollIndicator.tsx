@@ -18,7 +18,7 @@ export default function ScrollIndicator() {
       href="#values"
       aria-label="Scroll to content"
       data-testid="scroll-indicator"
-      className="absolute bottom-6 left-0 w-fit text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-all duration-300
+      className="mt-[25px] w-fit text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-all duration-300
         focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-[var(--accent)] focus-visible:outline-offset-[3px] rounded-sm"
       style={hidden === null ? undefined : { opacity: hidden ? 0 : 1, pointerEvents: hidden ? 'none' : 'auto' }}
     >
