@@ -1,6 +1,17 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import ValuesAccordion from '@/components/Home/ValuesAccordion';
+
+function mockDesktop() {
+  vi.mocked(window.matchMedia).mockReturnValue({
+    matches: true,
+    media: '(min-width: 1024px)',
+    onchange: null,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  } as unknown as MediaQueryList);
+}
 
 const items = [
   { value: 'first', title: 'First Item', children: <p>First content</p> },
@@ -21,22 +32,27 @@ describe('ValuesAccordion', () => {
     expect(screen.getByText('Third Item')).toBeInTheDocument();
   });
 
-  it('renders all item content', () => {
+  it('renders first item content visible by default', () => {
     render(<ValuesAccordion items={items} />);
     expect(screen.getByText('First content')).toBeInTheDocument();
-    expect(screen.getByText('Second content')).toBeInTheDocument();
-    expect(screen.getByText('Third content')).toBeInTheDocument();
   });
 
-  it('renders all items open by default', () => {
+  it('renders content for a closed item after opening it', () => {
     render(<ValuesAccordion items={items} />);
-    const triggers = screen.getAllByTestId('accordion-trigger');
-    triggers.forEach((trigger) => {
-      expect(trigger).toHaveAttribute('aria-expanded', 'true');
-    });
+    const [, secondTrigger] = screen.getAllByTestId('accordion-trigger');
+    fireEvent.click(secondTrigger);
+    expect(screen.getByText('Second content')).toBeInTheDocument();
   });
 
-  it('closes an item when its trigger is clicked', () => {
+  it('renders only the first item open by default', () => {
+    render(<ValuesAccordion items={items} />);
+    const [first, second, third] = screen.getAllByTestId('accordion-trigger');
+    expect(first).toHaveAttribute('aria-expanded', 'true');
+    expect(second).toHaveAttribute('aria-expanded', 'false');
+    expect(third).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('closes the first item when its trigger is clicked', () => {
     render(<ValuesAccordion items={items} />);
     const [firstTrigger] = screen.getAllByTestId('accordion-trigger');
     fireEvent.click(firstTrigger);
@@ -51,12 +67,12 @@ describe('ValuesAccordion', () => {
     expect(firstTrigger).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('closing one item does not close others', () => {
+  it('opening one item does not affect another', () => {
     render(<ValuesAccordion items={items} />);
     const [firstTrigger, secondTrigger] = screen.getAllByTestId('accordion-trigger');
-    fireEvent.click(firstTrigger);
-    expect(firstTrigger).toHaveAttribute('aria-expanded', 'false');
+    fireEvent.click(secondTrigger);
     expect(secondTrigger).toHaveAttribute('aria-expanded', 'true');
+    expect(firstTrigger).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('each trigger has aria-controls pointing to a panel', () => {
@@ -78,6 +94,15 @@ describe('ValuesAccordion', () => {
     render(<ValuesAccordion items={items} />);
     screen.getAllByTestId('accordion-trigger').forEach((trigger) => {
       expect(trigger.tagName).toBe('BUTTON');
+    });
+  });
+
+  it('renders all items open on desktop', () => {
+    mockDesktop();
+    render(<ValuesAccordion items={items} />);
+    const triggers = screen.getAllByTestId('accordion-trigger');
+    triggers.forEach((trigger) => {
+      expect(trigger).toHaveAttribute('aria-expanded', 'true');
     });
   });
 });
