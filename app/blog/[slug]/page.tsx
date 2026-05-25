@@ -136,7 +136,6 @@ export default async function BlogPost({
               <span className="site-muted">{readingTime}</span>
               {frontmatter.category && <CategoryTag category={frontmatter.category} />}
               <BionicReadingToggle contentSelector=".blog-post__content" />
-              <CopyLink />
             </div>
             {frontmatter.date && <OutdatedTag date={frontmatter.date} />}
           </header>
@@ -145,6 +144,10 @@ export default async function BlogPost({
             <MDXContent />
           </div>
         </article>
+        <div className="mt-16 pt-8 border-t border-[var(--border-subtle)] flex flex-wrap items-center gap-4">
+          <span className="text-xl font-medium text-[var(--text-body)]">Enjoyed this? Share it.</span>
+          <CopyLink />
+        </div>
         <PostNav prev={prev} next={next} />
       </SiteShell>
     </>

@@ -17,7 +17,7 @@ export default function PostNav({ prev, next }: PostNavProps) {
     <nav
       aria-label="More articles"
       data-testid="post-nav"
-      className="mt-16 pt-8 border-t border-[var(--border-subtle)] grid grid-cols-2 gap-4"
+      className="mt-8 pt-8 border-t border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 gap-4"
     >
       <div>
         {prev && (
@@ -27,9 +27,9 @@ export default function PostNav({ prev, next }: PostNavProps) {
           </Link>
         )}
       </div>
-      <div className="text-right">
+      <div className="sm:text-right">
         {next && (
-          <Link href={`/blog/${next.slug}`} className="group flex flex-col gap-2 py-2 pl-4">
+          <Link href={`/blog/${next.slug}`} className="group flex flex-col gap-2 py-2 sm:pl-4">
             <span className="site-muted text-base">Next →</span>
             <span className="site-link text-lg group-hover:text-[var(--accent-hover)]">{next.title}</span>
           </Link>
