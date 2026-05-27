@@ -5,6 +5,7 @@ import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights as VercelSpeedInsights } from '@vercel/speed-insights/next';
 import { siteDescription, siteName, siteTitle, siteUrl } from '@/lib/site';
 import HamburgerMenu from '@/components/Home/HamburgerMenu';
+import ThemeSync from '@/components/ThemeSync';
 import '../src/index.css';
 
 const dmSans = DM_Sans({
@@ -66,6 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body className="font-sans bg-matte text-ink-body text-base antialiased">
+        <ThemeSync />
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <HamburgerMenu />
         {children}

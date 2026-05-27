@@ -251,7 +251,7 @@
 
   html {
     scroll-behavior: smooth;
-    background-color: var(--bg-gradient-end);
+    background-color: var(--bg-matte);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -261,7 +261,7 @@
   }
 
   body {
-    background: linear-gradient(to bottom, var(--bg-matte) 0%, var(--bg-gradient-end) 100%);
+    background: linear-gradient(to bottom, var(--bg-matte) 0%, var(--bg-gradient-end) 50%, var(--bg-matte) 100%);
     min-height: 100vh;
     color: var(--text-body);
     font-size: 1.0625rem;
