@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import { themes, ThemeId, themeColors } from './colourThemes';
 import MobileColourThemeToggle from './MobileColourThemeToggle';
 import InfoTooltip from '../InfoTooltip';
@@ -10,25 +9,12 @@ const STORAGE_KEY = 'colour-theme';
 
 export default function ColourThemeToggle() {
   const [active, setActive] = useState<ThemeId | null>(null);
-  const pathname = usePathname();
 
   useEffect(() => {
     const saved = (localStorage.getItem(STORAGE_KEY) ?? 'default') as ThemeId;
     setActive(saved);
     applyTheme(saved);
   }, []);
-
-  useEffect(() => {
-    if (active === null) return;
-    const color = themeColors[active] ?? themeColors.default;
-    let meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.name = 'theme-color';
-      document.head.appendChild(meta);
-    }
-    meta.content = color;
-  }, [active, pathname]);
 
   function applyTheme(id: ThemeId) {
     if (id === 'default') {
