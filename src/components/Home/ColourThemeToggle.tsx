@@ -30,6 +30,7 @@ export default function ColourThemeToggle() {
     setActive(id);
     applyTheme(id);
     localStorage.setItem(STORAGE_KEY, id);
+    window.location.reload();
   }
 
   if (active === null) return null;
