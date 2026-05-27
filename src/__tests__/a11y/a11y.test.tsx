@@ -48,6 +48,7 @@ import PageNav from '@/components/Home/PageNav';
 import ScrollIndicator from '@/components/Home/ScrollIndicator';
 import { Section } from '@/components/Home/Section';
 import SiteFooter from '@/components/Home/SiteFooter';
+import ColourThemeToggle from '@/components/Home/ColourThemeToggle';
 import SiteShell from '@/components/Home/SiteShell';
 import TextLink from '@/components/Home/TextLink';
 import ValuesAccordion from '@/components/Home/ValuesAccordion';
@@ -170,6 +171,11 @@ describe('a11y', () => {
 
   it('ReadingProgress has no violations', async () => {
     const { container } = render(<ReadingProgress />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it('ColourThemeToggle has no violations', async () => {
+    const { container } = render(<ColourThemeToggle />);
     expect(await axe(container)).toHaveNoViolations();
   });
 });
