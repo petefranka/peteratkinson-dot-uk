@@ -4,7 +4,6 @@ import HomeBlog from './HomeBlog';
 import SiteFooter from './SiteFooter';
 import PersonJsonLd from './PersonJsonLd';
 import ValuesAccordion from './ValuesAccordion';
-import WorkAccordion from './WorkAccordion';
 import AvailabilityBadge from './AvailabilityBadge';
 import ScrollIndicator from './ScrollIndicator';
 
@@ -81,69 +80,33 @@ export default function HomePage() {
           </Section>
 
           <Section title="Work." id="work">
-            <WorkAccordion
-              items={[
-                {
-                  value: 'frasers-group',
-                  title: 'Frasers Group',
-                  date: 'Present',
-                  children: (
-                    <Paragraph>
-                      Right now I&apos;m in the Digital Data Team at Frasers, building
-                      rich data pipelines that feed digital experiences across Sports
-                      Direct, Frasers, GAME, Evans Cycles and Jack Wills.
-                    </Paragraph>
-                  ),
-                },
-                {
-                  value: 'heatly',
-                  title: 'Heatly',
-                  date: "Dec '25 – Mar '26",
-                  children: (
-                    <Paragraph>
-                      Before that I was Staff Engineer at Heatly, a SaaS platform for
-                      heat pump installations. I worked on architecture and tooling
-                      from the first survey through to project completion.
-                    </Paragraph>
-                  ),
-                },
-                {
-                  value: 'asos',
-                  title: 'ASOS',
-                  date: "Aug '22 – Dec '25",
-                  children: (
-                    <Paragraph>
-                      At ASOS I built warehousing software for their logistics platform,
-                      covering stock intake, reconciliation, returns and orders with
-                      tracking across the global supply chain.
-                    </Paragraph>
-                  ),
-                },
-                {
-                  value: 'sky',
-                  title: 'Sky',
-                  date: "Nov '21 – Aug '22",
-                  children: (
-                    <Paragraph>
-                      At Sky I worked on Glass, mainly streaming and entertainment
-                      features for their next-generation TV platform.
-                    </Paragraph>
-                  ),
-                },
-                {
-                  value: 'tui',
-                  title: 'TUI',
-                  date: "Aug '18 – Aug '21",
-                  children: (
-                    <Paragraph>
-                      At TUI I helped build booking platforms used by millions of
-                      travellers, including a dedicated travel site for the NHS.
-                    </Paragraph>
-                  ),
-                },
-              ]}
-            />
-            <div className="mt-10">
+            <div className="flex flex-col">
+              <Paragraph>
+                Most of my career has been in high-scale engineering. I started at TUI
+                building booking platforms used by millions of travellers across Europe,
+                including a dedicated travel site for the NHS. From there I moved into
+                consultancy and helped ship Sky Glass, working on the streaming and
+                entertainment features for their next-generation TV platform.
+              </Paragraph>
+              <Paragraph>
+                My longest chapter was at ASOS, where I spent over three years deep in
+                the logistics and warehousing side of the business. I built the systems
+                that handle stock intake, reconciliation, returns and order tracking
+                across their global supply chain. The kind of work that&apos;s invisible
+                when it&apos;s running well.
+              </Paragraph>
+              <Paragraph>
+                After ASOS I spent time at Heatly as Staff Engineer, working on
+                architecture and tooling for a SaaS platform built around heat pump
+                installations.
+              </Paragraph>
+              <Paragraph>
+                Right now I&apos;m at Frasers Group in their Digital Data team, building
+                the data pipelines that power digital experiences across Sports Direct,
+                Frasers, GAME, Evans Cycles and Jack Wills. A big part of the current
+                work is a multi-cloud replatforming effort, moving infrastructure from
+                AWS and on-premise systems over to Azure.
+              </Paragraph>
               <Paragraph>
                 <TextLink href="https://www.linkedin.com/in/peteratkinson1" external>
                   View full work history on LinkedIn

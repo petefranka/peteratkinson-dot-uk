@@ -52,7 +52,6 @@ import ColourThemeToggle from '@/components/Home/ColourThemeToggle';
 import SiteShell from '@/components/Home/SiteShell';
 import TextLink from '@/components/Home/TextLink';
 import ValuesAccordion from '@/components/Home/ValuesAccordion';
-import WorkAccordion from '@/components/Home/WorkAccordion';
 import BlogList from '../../../app/blog/BlogList';
 
 const valuesItems = [
@@ -60,10 +59,6 @@ const valuesItems = [
   { value: 'second', title: 'Second Item', children: <p>Second content</p> },
 ];
 
-const workItems = [
-  { value: 'job-one', title: 'Company A', date: "Jan '20 – Jan '21", children: <p>Work content</p> },
-  { value: 'job-two', title: 'Company B', children: <p>More work content</p> },
-];
 
 const posts = [
   { slug: 'post-a', title: 'Alpha Post', date: '2024-01-01', excerpt: 'About alpha.', category: 'Engineering', readingTime: '2 min read' },
@@ -145,11 +140,6 @@ describe('a11y', () => {
 
   it('ValuesAccordion has no violations', async () => {
     const { container } = render(<ValuesAccordion items={valuesItems} />);
-    expect(await axe(container)).toHaveNoViolations();
-  });
-
-  it('WorkAccordion has no violations', async () => {
-    const { container } = render(<WorkAccordion items={workItems} />);
     expect(await axe(container)).toHaveNoViolations();
   });
 
