@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { DM_Sans, Fraunces } from 'next/font/google';
 import Script from 'next/script';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
@@ -16,6 +16,10 @@ const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-serif',
 });
+
+export const viewport: Viewport = {
+  themeColor: '#f3e6eb',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
