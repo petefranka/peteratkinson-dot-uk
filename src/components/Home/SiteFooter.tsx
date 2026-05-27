@@ -1,4 +1,5 @@
 import TextLink from './TextLink';
+import ColourThemeToggle from './ColourThemeToggle';
 import { email, linkedInUrl } from '@/lib/site';
 
 export default function SiteFooter() {
@@ -13,6 +14,7 @@ export default function SiteFooter() {
           LinkedIn
         </TextLink>
       </div>
+      <ColourThemeToggle />
       <p className="site-muted">
         © {new Date().getFullYear()} Peter Atkinson. Built with accessibility in
         mind —{' '}

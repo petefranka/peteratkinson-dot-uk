@@ -91,6 +91,7 @@
   :root {
     --bg-matte: #f3e6eb;
     --bg-matte-deep: #e9d5de;
+    --bg-gradient-end: #dcc9d3;
     --text-heading: #1f181b;
     --text-body: #3f3539;
     --text-muted: #5c4f55;
@@ -106,6 +107,138 @@
     --available-soft: #6fa882;
     --available-bg: #e8f2ec;
     --available-border: #b8d4c4;
+  }
+
+  /* Protanopia — red-blind: shift rose/wine to blue */
+  html[data-theme="protanopia"] {
+    --bg-matte: #edf3fa;
+    --bg-matte-deep: #d8e8f5;
+    --bg-gradient-end: #c2d5ed;
+    --text-heading: #18202e;
+    --text-body: #2d3748;
+    --text-muted: #4a5a6e;
+    --accent: #2563a8;
+    --accent-soft: #90b8dd;
+    --accent-hover: #1a4a87;
+    --border-subtle: #b0cce8;
+    --warning: #975a16;
+    --warning-soft: #c68b30;
+    --warning-bg: #fefce8;
+    --warning-border: #d69e2e;
+    --available: #2c7a7b;
+    --available-soft: #68b2b2;
+    --available-bg: #e6fffa;
+    --available-border: #81d8d8;
+  }
+
+  /* Deuteranopia — green-blind: shift to blue/purple, avoid red-green confusion */
+  html[data-theme="deuteranopia"] {
+    --bg-matte: #f2eefa;
+    --bg-matte-deep: #e5dcf8;
+    --bg-gradient-end: #cfc0f0;
+    --text-heading: #1a1228;
+    --text-body: #312045;
+    --text-muted: #584878;
+    --accent: #5b35b0;
+    --accent-soft: #aa88e0;
+    --accent-hover: #42268a;
+    --border-subtle: #c0a8e8;
+    --warning: #b05a10;
+    --warning-soft: #d87830;
+    --warning-bg: #fff8f0;
+    --warning-border: #e8a060;
+    --available: #1a5a9a;
+    --available-soft: #6898d0;
+    --available-bg: #e8f2ff;
+    --available-border: #98c0e8;
+  }
+
+  /* Tritanopia — blue-blind: shift to warm red/orange, avoid blue */
+  html[data-theme="tritanopia"] {
+    --bg-matte: #fef6f0;
+    --bg-matte-deep: #fce8d8;
+    --bg-gradient-end: #f0cdb8;
+    --text-heading: #1f1008;
+    --text-body: #3d2010;
+    --text-muted: #6b4030;
+    --accent: #c53020;
+    --accent-soft: #e89080;
+    --accent-hover: #9b2018;
+    --border-subtle: #e2b8a8;
+    --warning: #7a5010;
+    --warning-soft: #a87030;
+    --warning-bg: #fffaed;
+    --warning-border: #d4a050;
+    --available: #2d6e40;
+    --available-soft: #70b880;
+    --available-bg: #f0faf2;
+    --available-border: #a8d8b8;
+  }
+
+  /* Monochrome — soft greyscale, all colour removed */
+  html[data-theme="monochrome"] {
+    --bg-matte: #f5f5f5;
+    --bg-matte-deep: #ebebeb;
+    --bg-gradient-end: #d8d8d8;
+    --text-heading: #1a1a1a;
+    --text-body: #333333;
+    --text-muted: #666666;
+    --accent: #444444;
+    --accent-soft: #999999;
+    --accent-hover: #222222;
+    --border-subtle: #c0c0c0;
+    --warning: #333333;
+    --warning-soft: #666666;
+    --warning-bg: #f5f5f0;
+    --warning-border: #aaaaaa;
+    --available: #2a2a2a;
+    --available-soft: #666666;
+    --available-bg: #f0f0f0;
+    --available-border: #aaaaaa;
+  }
+
+  /* Night — deep rose-tinted dark mode */
+  html[data-theme="night"] {
+    --bg-matte: #1c1018;
+    --bg-matte-deep: #150d14;
+    --bg-gradient-end: #0f0a10;
+    --text-heading: #f0e6ea;
+    --text-body: #d0c0c8;
+    --text-muted: #8a7880;
+    --accent: #e888a8;
+    --accent-soft: #7a3850;
+    --accent-hover: #f0a0bc;
+    --border-subtle: #3a2832;
+    --warning: #e8a870;
+    --warning-soft: #c07840;
+    --warning-bg: #281808;
+    --warning-border: #684020;
+    --available: #68b888;
+    --available-soft: #387858;
+    --available-bg: #0c2018;
+    --available-border: #285038;
+  }
+
+  /* High contrast — stark black/white for achromatopsia and low vision */
+  html[data-theme="high-contrast"] {
+    --bg-matte: #ffffff;
+    --bg-matte-deep: #f0f0f0;
+    --bg-gradient-end: #e0e0e0;
+    --text-heading: #000000;
+    --text-body: #111111;
+    --text-muted: #444444;
+    --accent: #000000;
+    --accent-soft: #666666;
+    --accent-hover: #222222;
+    --border-subtle: #888888;
+    --warning: #222222;
+    --warning-soft: #555555;
+    --warning-bg: #f8f8f0;
+    --warning-border: #777777;
+    --available: #1a1a1a;
+    --available-soft: #555555;
+    --available-bg: #f0f0f0;
+    --available-border: #888888;
   }
 
   *,
@@ -127,7 +260,7 @@
   }
 
   body {
-    background: linear-gradient(to bottom, var(--bg-matte) 0%, #dcc9d3 100%);
+    background: linear-gradient(to bottom, var(--bg-matte) 0%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
     color: var(--text-body);
     font-size: 1.0625rem;
