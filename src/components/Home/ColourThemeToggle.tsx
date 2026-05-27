@@ -62,7 +62,7 @@ export default function ColourThemeToggle() {
             </Tooltip.Trigger>
             <Tooltip.Portal>
               <Tooltip.Content className="site-tooltip" sideOffset={6} side="top">
-                Each profile adapts the site's colours for a different type of colour vision. Protanopia and deuteranopia affect red-green perception, tritanopia affects blue-yellow, and high contrast removes colour entirely for maximum legibility.
+                Each profile adapts the site&apos;s colours for a different type of colour vision. Protanopia and deuteranopia affect red-green perception, tritanopia affects blue-yellow, and high contrast removes colour entirely for maximum legibility.
                 <Tooltip.Arrow className="site-tooltip-arrow" />
               </Tooltip.Content>
             </Tooltip.Portal>
