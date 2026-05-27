@@ -251,6 +251,7 @@
 
   html {
     scroll-behavior: smooth;
+    background-color: var(--bg-gradient-end);
   }
 
   @media (prefers-reduced-motion: reduce) {

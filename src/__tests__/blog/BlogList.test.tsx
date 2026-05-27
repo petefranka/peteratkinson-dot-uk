@@ -37,7 +37,8 @@ describe('BlogList', () => {
 
   it('filter buttons have blog-filter-btn class with text-base', () => {
     render(<BlogList posts={posts} />);
-    screen.getAllByRole('button').forEach((btn) => {
+    const group = screen.getByRole('group', { name: 'Filter articles by category' });
+    Array.from(group.querySelectorAll('button')).forEach((btn) => {
       expect(btn).toHaveClass('blog-filter-btn');
     });
   });
